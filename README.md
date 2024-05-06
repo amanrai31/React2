@@ -10,5 +10,4 @@ Default value of counter= 10, use the function setCounter to set updated values 
 # Virtual DOM (React does not use this now a days)
 
 
-# React-Fiber
-<a href="https://github.com/acdlite/react-fiber-architecture"> React fiber</a>
+# React-Fiber- <a href="https://github.com/acdlite/react-fiber-architecture"> React fiber</a>

@@ -4,7 +4,7 @@
 Use state hook is used to *propagate* the change of variable in the UI.
 Learn how we could do that using plain JS.
 
-let [counter, setCounter] = useState(10);  // [value/variable, function/reference holder]
+`let [counter, setCounter] = useState(10);`  // [value/variable, function/reference holder]
 Default value of counter= 10, use the function setCounter to set updated values of counter.
 
 

@@ -26,3 +26,5 @@ Note :- Diffing(Defining) of lists is performed using keys. Keys should be "stab
 
 Note :- Virtual DOM (React does not use this now a days)
 Note :- Hydration- When JS comes in HTML while browser loads WebPage.
+
+Note :- Props are read-only information that's passed to components. State is information that can change over time, usually triggered by user interaction.

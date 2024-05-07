@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+# 01hooks
+Use state hook is used to *propagate* the change of variable in the UI.
+Learn how we could do that using plain JS.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+let [counter, setCounter] = useState(10);  // [value/variable, function/reference holder]
+Default value of counter= 10, use the function setCounter to set updated values of counter.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## React-Fiber- <a href="https://github.com/acdlite/react-fiber-architecture" target="_blank"> React fiber</a>
 
-## Expanding the ESLint configuration
+Key features of React-fiber => 
+1. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Reconciliation => The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM".
+
+Note :- Diffing(Defining) of lists is performed using keys. Keys should be "stable, predictable, and unique". When you iterate array or something in any UI element like Button etc.   
+
+
+
+Note :- Virtual DOM (React does not use this now a days)
+Note :- Hydration- When JS comes in HTML while browser loads WebPage.
+
+### More on Reconciliation, React-Fiber =>  Lecture 7 of chai & react (HC) 

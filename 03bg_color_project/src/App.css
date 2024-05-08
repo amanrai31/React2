@@ -1,0 +1,19 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+ */
+
+ .button1{
+  margin-right: 10px; 
+  /* background-color: green; */
+   border: none;
+   color: white;
+   padding: 10px 24px; 
+   textAlign: center; 
+   textDecoration: none; 
+   display: inline-block; 
+   fontSize: 16px;
+ }

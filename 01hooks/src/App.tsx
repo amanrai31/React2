@@ -2,21 +2,19 @@ import { useState } from 'react'
 
 function App() {
 
-let [counter, setCounter] = useState(10)      // [value/variable, function/reference holder] 
+const [counter, setCounter] = useState(10)      // [value/variable, function/reference holder] 
 
 const addValue = () => {                       // As arrow function
-  counter +=1;
+  setCounter(counter+1);
   if(counter>=25){
-    counter = 25;
+    setCounter(25)
   }
-  setCounter(counter);
 }
 function removeValue() {                     // Usual Function
-  counter -=1;
+  setCounter(counter-1);
   if(counter<= -5){
-    counter = -5;
+    setCounter(-5)
   }
-  setCounter(counter--);
 }
 return (
     <>

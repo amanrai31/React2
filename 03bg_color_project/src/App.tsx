@@ -3,13 +3,12 @@ import './App.css'
 
 function App() {
 
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("lavender");
 
   return (
     <>
-     <div  style={{backgroundColor: color, width: "100vw", height:"100vh", margin:"0px", transitionDuration:"1s"}}>
-     <div style={{ position: 'absolute', bottom: 10, left: 10, right:10, width: '90%', backgroundColor: '#333', padding: '10px 40px', borderRadius:50, }}>
-    
+     <div  style={{backgroundColor: color, width: "100vw", height:"100vh", margin:"0px", transitionDuration:"0.5s",}}>
+     <div style={{ position: 'absolute', display:"flex",justifyContent: 'center', alignItems: 'center', bottom: 10, left: 10, width: '90%', backgroundColor: '#333', padding: '10px 40px', borderRadius:50, }}>
         <button className="button1" style={{backgroundColor:"red"}} onClick={() => setColor("red")}> RED </button>
         <button className="button1" style={{backgroundColor:"green"}} onClick={() =>setColor("green")} > Green </button>
         <button className="button1" style={{backgroundColor:"blue"}} onClick={() =>setColor("blue")}  > Blue </button>

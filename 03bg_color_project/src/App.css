@@ -16,4 +16,5 @@
    textDecoration: none; 
    display: inline-block; 
    fontSize: 16px;
+   border-radius:50px;
  }

@@ -1,3 +1,7 @@
+# onClick
+
+
+
 In App route based on react *server* component.
 Page route based on react *client* side routing 
 

@@ -14,6 +14,8 @@ More on Reconciliation, React-Fiber =>  Lecture 6 of chai & react (HC)
 4. Pass Array or object in Props.
 
 ## 03bg_color_project 
+1. onClick- It expects the function only not the function reference or the return value of that function - This is a SYNTAX problem. But when we pass like this `onClick={setColor("red)}` then `setColor("red)` will return a value which is not acceptable for onClick.
+2. onClick- `onClick={() => setColor("red")}` here we are just providing arrow f/n OR callback, which is calling another f/n i.e. setColor f/n. 
 
 #### rfce - shortcut for react functional component
 

@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <div  style={{backgroundColor: color, width: "100vw", height:"100vh", margin:"0px"}}>
+     <div  style={{backgroundColor: color, width: "100vw", height:"100vh", margin:"0px", transitionDuration:"1s"}}>
      <div style={{ position: 'absolute', bottom: 10, left: 10, right:10, width: '90%', backgroundColor: '#333', padding: '10px 40px', borderRadius:50, }}>
     
         <button className="button1" style={{backgroundColor:"red"}} onClick={() => setColor("red")}> RED </button>
@@ -22,4 +22,18 @@ function App() {
   )
 }
 
-export default App  
+export default App 
+
+{/* <div className="w-full h-screen duration-1000"
+style={{ backgroundColor: color }}>
+<div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2">
+  <div className="flex flex-wrap justify-centre gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
+    <button onClick={()=> setColor("red")} className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
+      style={{ backgroundColor: "red"  }}>
+      Red
+    </button>
+  <div/>
+<div/>
+<div/> */}     // -- Tailwind
+
+ 

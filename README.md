@@ -81,3 +81,65 @@ return (
   <ul>{listItems}</ul>
 );
 ```
+
+#### Responding to events 
+
+You can respond to events by declaring event handler functions inside your components.
+
+```js
+return (
+    <button onClick={handleClick}>         // Do not call the event handler function, just pass it.
+      Click me
+    </button>
+  );
+```
+
+#### Updating the screen 
+Often, we want our component to “remember” some information and display it.
+
+Functions starting with use are called Hooks. `useState` is a built-in Hook provided by React. We can also write our own Hooks by combining the existing ones.
+
+**NOTE :**  If you want to use useState in a condition or a loop, extract a new component and put it there. Beacuse React expects the order of hooks to be the same every render so if we put hooks in side some condition (if, for loop) so the order is inconsistent.
+
+#### Pass props
+
+```js
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
+}
+function MyButton({count,onClick}){
+return (
+<button onClick ={onClick}>
+Count is {count}
+</button>
+)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

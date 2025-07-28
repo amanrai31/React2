@@ -20,3 +20,64 @@ More on Reconciliation, React-Fiber =>  Lecture 6 of chai & react (HC)
 #### rfce - shortcut for react functional component
 
 More about useState hook- presetcounter(callback in useState)- Lecture 8 of chai & react (HC).
+
+-----
+
+React apps are made out of components. 
+**Component =>** React components are JavaScript functions that return markup. A component is a piece of the UI that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+
+**NOTE :** React component names must always start with a capital letter, while HTML tags must be lowercase.
+
+**NOTE :** In React, you specify a CSS class with className. It works the same way as the HTML class attribute
+
+```js
+// React components
+function MyButton() {
+  return (
+    <button>
+      I'm a button
+    </button>
+  );
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
+  );
+}
+```
+
+**NOTE :** The markup syntax we use in React components JSX (optional) => used by most react projects.
+
+JSX lets you put markup into JS. Curly braces `{}` let you “escape back” into JS so that you can embed some `variable/inner content` from your code. We can also “escape into JS” from JSX attributes using `{}`.
+
+#### Conditional rendaring
+
+```js
+<div>
+  {isLoggedIn ? (                   // OR if we just want AdminPanel if loggedIn then => {isLoggedIn && <AdminPanel>}
+    <AdminPanel />
+  ) : (
+    <LoginForm />
+  )}
+</div>
+```
+
+#### Rendering List
+You will rely on JS features like for loop and the array map() function to render lists of components.
+
+```js
+product is an array of objects => object containing title & id.
+const listItems = products.map(product =>
+  <li key={product.id}>           //  For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually this key comes from DB
+    {product.title}
+  </li>
+);
+
+return (
+  <ul>{listItems}</ul>
+);
+```

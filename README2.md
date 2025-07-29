@@ -42,6 +42,27 @@ But you can use `default exports` OR `named exports` OR `both of them(MIXED)` in
 - Named => Export statement => `export function Button() {}` || Import statement => `import {Button} from './Button.js';` (While importing we must have to give Exact name which is exported, that's why they are `named export`)
 
 
+**NOTE :** In your project, try to stick with one way => either `default export` or `named export`. Though we can use the mixed export too.
+
+-----
+
+## JSX
+
+JSX is simply putting markup into JavaScript
+
+**NOTE :** JSX and React are two separate things. They’re often used together, but you can use them independently of each other. JSX is a syntax extension, while React is a JS library.
+
+Rules of JSX =>
+
+1. To return multiple elements from a component, wrap them with a single parent tag. (Use either <div></div> OR just <></>)
+
+**NOTE :** This empty tag(<></>) is called a Fragment. Fragments let you group things without leaving any trace in the browser HTML tree.  
+
+**NOTE :** JSX looks like HTML, but under the hood it is transformed into plain JS objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
+
+2. Close all the tags => self-closing tags (<img />) || wrapper tags (<li></li>)
+
+
 
 
 

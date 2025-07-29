@@ -60,7 +60,7 @@ Rules of JSX =>
 
 **NOTE :** JSX looks like HTML, but under the hood it is transformed into plain JS objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
 
-2. Close all the tags => self-closing tags (<img />) || wrapper tags (<li></li>)
+2. Close all the tags => self-closing tags `<img />` || wrapper tags `<li></li>`
 
 
 

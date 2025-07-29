@@ -62,10 +62,18 @@ Rules of JSX =>
 
 2. Close all the tags => self-closing tags `<img />` || wrapper tags `<li></li>`
 
+3. All things in camalCase
 
+JSX turns into JS and `attributes` written in JSX become `keys of JS objects`. But JS has limitations on variable names. For example, their names can’t contain dashes or be reserved words like class. That is why we use `className` instead of `class` & `strokeWidth` instead of `stroke-width`
 
+**NOTE :** For historical reasons, `aria-*` and `data-*` attributes are written as in HTML with dashes.  
 
+### JS in JSX with curly Braces
 
+- When you want to pass a string attribute to JSX, you put it in single or double quotes. But what if you want to dynamically specify the src or alt text => Curly beace `{}` is the key & A window into the JS world 
+
+- In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. We often see this in style attribute. So the next time you see {{ and }} in JSX, know that it’s nothing more than an object inside the JSX curlies!
+-----
 
 
 

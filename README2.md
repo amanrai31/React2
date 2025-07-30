@@ -48,7 +48,7 @@ But you can use `default exports` OR `named exports` OR `both of them(MIXED)` in
 
 ## JSX
 
-JSX is simply putting markup into JavaScript
+JSX is simply putting markup into JS. Tt's just a plain JS object representing a virtual DOM node.
 
 **NOTE :** JSX and React are two separate things. They’re often used together, but you can use them independently of each other. JSX is a syntax extension, while React is a JS library.
 
@@ -82,7 +82,48 @@ JSX turns into JS and `attributes` written in JSX become `keys of JS objects`. B
 
 React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. We can pass any JS value through them including object, array & function
 
+**NOTE :**  React component functions accept a single argument, a props object.
 
+```js
+function Avatar({ person, size =100 }) {    // This syntax is “destructuring”(same as below) and is equivalent to reading properties from a f/n parameter. Also we can give default value for a prop.
+  // ...
+}
+
+function Avatar(props) {   
+  let person = props.person;
+  let size = props.size;
+  // ...
+}
+
+// NOTE => The default value is only used if the size prop is missing or if you pass size={undefined}. But if you pass size={null} or size={0}, the default value will not be used.
+
+```
+
+#### Passing JSX as childern
+
+```js
+function Card({ children }) {     // Will recive Avatar in a prop called children
+  return (
+    <div className="card">
+      {children}
+    </div>
+  );
+}
+```
+```js
+<Card>
+  <Avatar />                     // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too. Means they are very flexible
+</Card>
+
+```
+
+**NOTE :**  props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JS engine will reclaim the memory taken by them.
+
+
+
+-----
+
+## Conditional redering
 
 
 

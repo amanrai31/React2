@@ -211,7 +211,10 @@ export default function TeaSet() {
 
 ```
 
+React offers a “Strict Mode” in which it calls each component’s function twice during development. By calling the component functions twice, Strict Mode helps find components that break these rules. You can wrap your root component into <React.StrictMode>. Some frameworks do this by default.
 
+**NOTE :** However, it’s completely fine to change variables and objects that you’ve just created while rendering(inside the function itself).
 
+**NOTE :** Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.(They have to change something which is out of thier scope)
 
-
+**NOTE :** You should not mutate any of the inputs that your components use for rendering. That includes `props`, `state`, and `context`. To update the screen, “set” state instead of mutating preexisting objects.

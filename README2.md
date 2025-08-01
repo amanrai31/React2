@@ -218,3 +218,5 @@ React offers a “Strict Mode” in which it calls each component’s function t
 **NOTE :** Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.(They have to change something which is out of thier scope)
 
 **NOTE :** You should not mutate any of the inputs that your components use for rendering. That includes `props`, `state`, and `context`. To update the screen, “set” state instead of mutating preexisting objects.
+
+**NOTE :** Strive to express your component’s logic in the JSX you return. When you need to “change things”, you’ll usually want to do it in an event handler. As a last resort, you can useEffect

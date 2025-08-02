@@ -1,4 +1,4 @@
-# CONTENT => REACT Component
+# CONTENT => REACT UI, COMPONENT, JSX, PROPS, RENDERING, TREE
 
 ## Component
 

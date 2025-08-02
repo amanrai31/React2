@@ -119,7 +119,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 
 -----
 
-## Conditional redering
+## Conditional rendering
 
 - use `if-else` || `ternary` || `&&` => depends on use case OR We can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
 

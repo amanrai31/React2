@@ -108,8 +108,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 ```
 ```js
 <Card>
-  <Avatar />        // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too. 
-                                 
+  <Avatar />        // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too.                 
 </Card>
 
 ```

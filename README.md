@@ -23,6 +23,8 @@ More about useState hook- presetcounter(callback in useState)- Lecture 8 of chai
 
 -----
 
+# 20% things that are used 80% of time
+
 React apps are made out of components. 
 
 **Component =>** React components are JavaScript functions that return markup. A component is a piece of the UI that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.

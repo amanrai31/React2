@@ -114,7 +114,8 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 ```
 ```js
 <Card>
-  <Avatar />                     // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too. Means they are very flexible
+  <Avatar />                     // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too. Means they 
+                                 // are very flexible
 </Card>
 
 ```
@@ -220,3 +221,29 @@ React offers a “Strict Mode” in which it calls each component’s function t
 **NOTE :** You should not mutate any of the inputs that your components use for rendering. That includes `props`, `state`, and `context`. To update the screen, “set” state instead of mutating preexisting objects.
 
 **NOTE :** Strive to express your component’s logic in the JSX you return. When you need to “change things”, you’ll usually want to do it in an event handler. As a last resort, you can useEffect
+
+-----
+
+## UI as a tree
+
+Trees are a relationship model between items and UI is often represented using tree structures. Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components in a React app.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

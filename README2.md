@@ -128,7 +128,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 
 -----
 
-## Rendaring Lists
+## Rendering Lists
 
 We often want to display multiple similar components from a collection of data. Use JS array methods to manipulate array of DATA like `map()`, `forEach()`, `filter()` etc.
 
@@ -144,7 +144,7 @@ const listItems = chemists.map(person =>
 
 **IMPORTANT NOTE :** Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen key helps React infer what exactly has happened, and make the correct updates to the DOM tree. So include key in DATA/DB
 
-For more clarity => [https://codesandbox.io/p/devbox/uniquekey-j8m9py?file=%2Fsrc%2FApp.tsx]
+For more clarity(Why unique key important) => [https://codesandbox.io/p/devbox/uniquekey-j8m9py?file=%2Fsrc%2FApp.tsx]
 
 ----- 
 

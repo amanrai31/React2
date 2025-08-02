@@ -46,7 +46,7 @@ But you can use `default exports` OR `named exports` OR `both of them(MIXED)` in
 
 ## JSX
 
-JSX is simply putting markup into JS. It's just a plain JS object representing a virtual DOM node.
+JSX is simply putting markup into JS. It's just a plain JS object representing a virtual DOM (V-DOM) node.
 
 JSX elements aren’t “instances” because they don’t hold any internal state and aren’t real DOM nodes. They’re lightweight descriptions, like blueprints(Virtual-DOM).
 

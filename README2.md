@@ -226,16 +226,20 @@ React offers a “Strict Mode” in which it calls each component’s function t
 
 ## UI as a tree
 
-Trees are a relationship model between items and UI is often represented using tree structures. Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components in a React app.
+Trees are a relationship model between items and UI is often represented using tree structures. Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components(across a single render) in a React app called Render Tree.
+
+The tree is composed of nodes, each of which represents a component. like `App`, `ProfileCard`, `Table` etc. The root node in React render tree is the root component of the app it could be `Index`, `Main`, `App` oe anything.
+
+**IMPORTANT NOTE :** React, as a UI framework, is platform agnostic. On react.dev, we showcase examples that render to the web, which uses HTML markup as its UI primitives. But a React app could just as likely render to a mobile or desktop platform, which may use different UI primitives like UIView(iOS) or TextView(Andriod) or FrameworkElement(Windows desktop) OR NSView(macOS Desktop).
 
 
+- Module Dependency Tree/Dependency Tree  => Each node in a module dependency tree is a module and each branch represents an import statement in that module.
 
+In production, there is typically a build step that will bundle all the necessary JS to ship to the client. The tool responsible for this is called a bundler, and bundlers will use the dependency tree to determine what modules should be included.
 
+**Differnce :** The render tree only encapsulates components. But Dependency tree also Non-component modules.
 
-
-
-
-
+**NOTE :** If `component A` recives `component B` as child(prop) it does not need to import `component B`
 
 
 

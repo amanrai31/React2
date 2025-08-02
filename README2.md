@@ -123,7 +123,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 
 - use `if-else` || `ternary` || `&&` => depends on use case OR We can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
 
-**NOTE :** a common mistake is to write code like messageCount && <p>New messages</p>. It’s easy to assume that it renders nothing when messageCount is 0, but it really renders the 0 itself! To fix it, make the left side a boolean: messageCount > 0 && <p>New messages</p>.
+**NOTE :** a common mistake is to write code like `messageCount && <p>New messages</p>`. It’s easy to assume that it renders nothing when messageCount is 0, but it really renders the 0 itself! To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
 
 
 -----

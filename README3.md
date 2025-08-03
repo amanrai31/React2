@@ -1,4 +1,4 @@
-# CONTENT => 
+# CONTENT => EVENT, STATE, 
 
 ## Responding to Events
 
@@ -67,6 +67,14 @@ Some browser events have default behavior associated with them. For example, a <
 
 -----
 
+## Hook
+
+**Hooks =>** Hooks—functions starting with `use`—can only be called at the top level of your components or your own Hooks. You can’t call Hooks inside conditions, loops, or other nested functions. 
+
+Hooks are special functions that are only available while React is rendering. They let you “hook into” different React features.
+
+Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to 0 before rendering. Each time you call useState, React gives you the next state pair and increments the index. 
+
 ## State => A component's memory
 
 Components often need to change what’s on the screen as a result of an interaction. Also Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of `component-specific memory` is called state.
@@ -76,6 +84,50 @@ Why regular variable is not enough =>
 
 1. `Local variables don’t persist between renders`=> When React renders this component a second time, it renders it from scratch—it doesn’t consider any changes to the local variables.
 2. `Changes to local variables won’t trigger renders`=> React doesn’t realize it needs to render the component again with the new data.
+
+**To update a component with new data, two things need to happen**
+
+1. Retain the data between renders.
+2. Trigger React to render the component with new data (re-rendering).
+
+**The `useState` Hook provides those two things**
+
+1. A state variable to retain the data between renders.
+2. A state setter function to update the variable and trigger React to render the component again.
+
+```js
+const [index, setIndex] = useState(0);
+// index is a state variable and setIndex is the setter function.
+```
+
+**NOTE :** The `[` and `]` syntax here is called array destructuring and it lets you read values from an array. The array returned by useState always has exactly two items.
+
+**Anatomy of `useState` =>** When you call useState, you are telling React that you want this component to remember something. `const [index, setIndex] = useState(0);` Here we want react to remember `index`.
+
+**NOTE :** The only argument to useState is the initial value of your state variable. In above example, the index’s initial value is set to 0 with useState(0).
+
+=> It is a good idea to have multiple state variables if their state is unrelated. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it’s more convenient to have a single state variable that holds an object than state variable per field.
+
+**State is isolated and private :** State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

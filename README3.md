@@ -110,9 +110,39 @@ const [index, setIndex] = useState(0);
 
 **State is isolated and private :** State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other. Unlike props, state is fully private to the component declaring it. The parent component can’t change it. This lets you add state to any component or remove it without impacting the rest of the components.
 
+```js
+import { useState } from 'react';
+
+export default function FeedbackForm() {
+  const [isSent, setIsSent] = useState(false);
+  const [message, setMessage] = useState('');
+  if (isSent) {                                 // We can use ternary operator
+    return <h1>Thank you!</h1>;
+  } else {
+    return (
+      <form onSubmit={e => {
+        e.preventDefault();
+        alert(`Sending: "${message}"`);       // Alert is async, pause the whole execution
+        setIsSent(true);
+      }}>
+        <textarea
+          placeholder="Message"
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+        />
+        <br />
+        <button type="submit">Send</button>
+      </form>
+    );
+  }
+}
+
+```
 
 
+-----
 
+## Render & Commit
 
 
 

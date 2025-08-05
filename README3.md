@@ -148,7 +148,7 @@ export default function FeedbackForm() {
 2. `Rendering the component` (preparing the order in the kitchen)
 3. `Committing to the DOM` (placing the order on the table)
 
-### . `Triggering a render` => There are two reasons for a component to render:
+### STEP 1 => `Triggering a render` => There are two reasons for a component to render
 
 1. It’s the component’s initial render.
 
@@ -161,13 +161,26 @@ root.render(<Image />);
 
 2. Re-renders when the component’s (or one of its ancestors’) state has been updated.
 
+### STEP 2 =>  React renders your components
+
+After you trigger a render, React calls your components to figure out what to display on screen. `Rendering is React calling your components`.
+
+. On initial render, React will call the root component.
+. For subsequent renders, React will call the function component whose state update triggered the render.
+
+**NOTE :** This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on(until no more nested components). 
+
+**NOTE :** Rendering must be pure. i.e. Same input-same output (component should always return same JSX) AND It maids it's own businees (should not change any objects or variables that existed before rendering).
+
+**IMPORTANT NOTE :** The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree(We wil see).
 
 
+### Step 3: React commits changes to the DOM
 
+After rendering (calling) components, React will modify the DOM.
 
-
-
-
+- For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
+- For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 
 
 

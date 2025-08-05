@@ -165,8 +165,8 @@ root.render(<Image />);
 
 After you trigger a render, React calls your components to figure out what to display on screen. `Rendering is React calling your components`.
 
-. On initial render, React will call the root component.
-. For subsequent renders, React will call the function component whose state update triggered the render.
+- On initial render, React will call the root component.
+- For subsequent renders, React will call the function component whose state update triggered the render.
 
 **NOTE :** This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on(until no more nested components). 
 
@@ -180,11 +180,18 @@ After you trigger a render, React calls your components to figure out what to di
 After rendering (calling) components, React will modify the DOM.
 
 - For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
-- For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+- For re-renders, React will apply the minimal necessary operations (calculated while rendering- if there is diff b/w renders) to make the DOM match the latest rendering output.
 
+**IMPORTANT NOTE :** After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as `browser rendering`, we’ll refer to it as “painting” to avoid confusion throughout the docs.
 
+-----
 
+### State as a snapshot
 
+`A state variable’s value never changes within a render, even if its event handler’s code is asynchronous. React stores state outside of your component, as if on a shelf.
+When you call useState, React gives you a snapshot of the state for that render. Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers. Event handlers created in the past have the state values from the render in which they were created.`
+
+- MUST READ => [https://react.dev/learn/state-as-a-snapshot]
 
 
 

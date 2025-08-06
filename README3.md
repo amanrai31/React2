@@ -186,21 +186,94 @@ After rendering (calling) components, React will modify the DOM.
 
 -----
 
-### State as a snapshot
+## State as a snapshot
 
 `A state variable’s value never changes within a render, even if its event handler’s code is asynchronous. React stores state outside of your component, as if on a shelf.
 When you call useState, React gives you a snapshot of the state for that render. Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers. Event handlers created in the past have the state values from the render in which they were created.`
 
 - MUST READ => [https://react.dev/learn/state-as-a-snapshot]
 
+-----
 
+## Queueing a Series of State Updates
 
+Sometimes we have to perform multiple operations on the value before queueing the next render.
 
+### Batching => React batches state updates
 
+```js
+// clicking the button(+3) will not increase count by 3. It only increses by 1.
+import { useState } from 'react';
 
+export default function Counter() {
+  const [number, setNumber] = useState(0);
 
+  return (
+    <>
+      <h1>{number}</h1>
+      <button onClick={() => {
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+      }}>+3</button>
+    </>
+  )
+}
+// If i add updater f/n inside setter, you can assume like React is executing 1st updater f/n then set the state || execute 2nd updater f/n then set the state and so
+// on... 
+```
 
+- 2 main reasons =>
+1. As we have discussed before each render’s state values are fixed, so the value of number inside the first render’s event handler is always 0
+2.  React waits until all code in the event handlers has run before processing your state updates. Re-render only happens after all these setNumber() calls. (waiter taking orders analogy). This behaviour is called **Batching** (Put all setter f/n in queue )
 
+**NOTE :** React does not batch across multiple intentional events like clicks—each click is handled separately.
+
+**Updater function** => Function inside state setter f/n. React Batches the Updater function too.(REACT Puts it in queue) (Should be pure)
+
+**NOTE :** After the event handler completes, React will trigger a re-render. During the re-render, React will process the queue.
+
+```js
+// Run on sandBox
+import { useState } from 'react';
+
+export default function RequestTracker() {
+  const [pending, setPending] = useState(0);
+  const [completed, setCompleted] = useState(0);
+
+  async function handleClick() {
+    setPending(pending + 1);
+    await delay(3000);
+    setPending(pending => pending - 1);
+    setCompleted(completed => completed + 1);
+  }
+
+  return (
+    <>
+      <h3>
+        Pending: {pending}
+      </h3>
+      <h3>
+        Completed: {completed}
+      </h3>
+      <button onClick={handleClick}>
+        Buy     
+      </button>
+    </>
+  );
+}
+
+function delay(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
+```
+
+**IMPORATANT NOTE :** If i add updater f/n inside setter, you can assume like React is executing 1st updater f/n then set the state || execute 2nd updater f/n then set the state and so on... 
+
+- MUST READ [https://react.dev/learn/queueing-a-series-of-state-updates#challenges]
 
 
 

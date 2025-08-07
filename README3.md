@@ -350,9 +350,14 @@ function handleCityChange(e) {
 
 **IMPORTANT NOTE :** Mutating an object directly will not cause a re-render, it stores the updated value in previous render state.
 
+-----
 
+## Upadteing Array in State
 
+Just like objects Arrays are mutable in JS, but you should treat them as immutable when you store them in state.
 
+- Do changes on array using non-mutating methods like filter() and map(), concat, [...array], slice, toSpliced, toSort, toReverse
+- Try NOT to use => splice, push, pop || unshift, shift, reverse, sort
 
 
 

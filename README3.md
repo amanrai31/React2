@@ -275,15 +275,80 @@ function delay(ms) {
 
 - MUST READ [https://react.dev/learn/queueing-a-series-of-state-updates#challenges]
 
-
 -----
 
+## Updating objects in state
 
+We shouldn’t change objects that is hold in the React state directly. Create a new one(or make a copy of an existing one) & then set the state to use that copy.
 
+```js
+const [x, setX] = useState(0);
+setX(5)
+```
 
+- The x state changed from 0 to 5, but the number 0 itself did not change. It’s not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JS because they are immutable(read-only). But object are mutable that is why we should not directly mutate them (We should treat them as READ-ONLY(IMMUTABLE)).
 
+**NOTE :** We should treat any JS object `that you put into state` as `read-only`.
 
+```js
+Red dot move with pointer/cursor
 
+import { useState } from 'react';
+
+export default function MovingDot() {
+  const [position, setPosition] = useState({
+    x: 0,
+    y: 0
+  });
+  return (
+    <div
+      onPointerMove={e => {
+        newPosition = {...position}                  
+        newPosition.x = e.clientX;
+        newPosition.y = e.clientY;
+        setPosition(newPosition);
+      }}
+      style={{
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
+      }}>
+      <div style={{
+        position: 'absolute',
+        backgroundColor: 'red',
+        borderRadius: '50%',
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        left: -10,
+        top: -10,
+        width: 20,
+        height: 20,
+      }} />
+    </div>
+  );
+}
+```
+
+```js
+function handleFirstNameChange(e) { setPerson({ ...person, firstName: e.target.value}); } // Ya we can do like const newPerson = {...person}; newPerson.firstName: e.target.value; setPerson(newPerson)
+```
+**Immer :** We can use immer library to flat & update nested objects.
+```js
+const [person, updatePerson] = useImmer({
+    name: 'Niki de Saint Phalle',
+    artwork: {
+      title: 'Blue Nana',
+      city: 'Hamburg',
+      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    }
+  });
+function handleCityChange(e) {
+    updatePerson(draft => {
+      draft.artwork.city = e.target.value;         //updates even nested object's props.
+    });
+  }
+```
+
+**IMPORTANT NOTE :** Mutating an object directly will not cause a re-render, it stores the updated value in previous render state.
 
 
 

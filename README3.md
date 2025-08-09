@@ -352,7 +352,7 @@ function handleCityChange(e) {
 
 -----
 
-## Upadteing Array in State
+## Updating Array in State
 
 Just like objects Arrays are mutable in JS, but you should treat them as immutable when you store them in state.
 
@@ -365,16 +365,11 @@ Just like objects Arrays are mutable in JS, but you should treat them as immutab
 
 Transform/Replace item in array => use new array then make change then set/change the setter function.
 
-**IMPORTANT NOTE :** If array is nested we cann't mutated even the `copy array` after spread [...] because spread creates shalow copy.
+**IMPORTANT NOTE :** If array is nested we cann't mutated even the `copy array` after spread [...] because spread creates shalow copy. => `useImmer` or other `raw JS concepts`
 
 MORE READ ON updating object inside array => [https://react.dev/learn/updating-arrays-in-state#updating-objects-inside-arrays]
 
-
-
-
-
-
-
+-----
 
 
 

@@ -19,3 +19,62 @@ isEmpty and isTyping can’t be true at the same time.
 
 - Can you get the same information from the inverse of another state variable? isError is not needed because you can check error !== null instead.
 
+
+-----
+
+## Choosing the State Structure 
+
+Make choices about how many state variables to use and what the shape of their data should be in the component.
+
+1. Group related state => If you always update two or more state variables at the same time, consider merging them into a single state variable.
+2. Avoid contradictions in state
+3. Avoid redundant state(mirroring) => If you can calculate some information from the component’s props or its existing state variables during rendering, you should not put that information into that component’s state.
+4. Avoid duplication in state
+5. Avoid deeply nested state
+
+**Point =>** This is similar to how a database engineer might want to `normalize` the database structure to reduce the chance of bugs.
+
+`Mirroring props into state **only** makes sense when you want to ignore all updates for a specific prop. =>`
+
+```js
+function Message({ initialColor }) {
+  // The `color` state variable holds the *first* value of `initialColor`.
+  // Further changes to the `initialColor` prop are ignored.
+  const [color, setColor] = useState(initialColor); }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

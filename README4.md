@@ -55,21 +55,52 @@ function Message({ initialColor }) {
 
 ## Preserving and Resetting State
 
+### State is tied to a position in the render tree 
+
 State is isolated between components. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.
 
  => State doesn’t live inside your component’s code — it lives inside React. React keeps track of which state belongs to which component by remembering where that component is in the UI tree. Think of it like: Your component says, “I need a box to store this value.” React owns the storage boxes and puts them in the right spot in a big shelf (the render tree). When your component is rendered again, React goes to the same shelf spot and gives you your box back.
 
 **NOTE :** In React, each component on the screen has fully isolated state. Even if you render/useInUI this component 10 times, each component will get it's own, independent state(s).
 
+**IMPORTANT NOTE :** React will keep the state around for as long as you render the `same component` at the `same position` in the tree. When React removes a component, it destroys its state.
 
+Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree]
 
+**Same component at the same position preserves state** => Even you put them inside some condition
 
+**Different components at the same position reset state** => Diff components inside some condition, switching between them will reset the state.
 
+**NOTE :** , if you want to preserve the state between re-renders, the structure of your tree needs to “match up” from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
 
+**NOTE :** You should not nest component function definitions inside some other component.
 
+### Resetting state at the same position
 
+1. Render components in different positions
 
+```js
+<div>
+      {isPlayerA &&
+        <Counter person="Taylor" />
+      }
+      {!isPlayerA &&
+        <Counter person="Sarah" />
+      }
+</div>
+```
 
+2. Give each component an explicit identity with key => Specifying a key tells React to use the key itself as part of the position, instead of their order within the parent
+
+```js
+<div>
+      {isPlayerA ? (
+        <Counter key="Taylor" person="Taylor" />
+      ) : (
+        <Counter key="Sarah" person="Sarah" />
+      )}
+</div>
+```
 
 
 

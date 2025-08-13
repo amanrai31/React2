@@ -43,16 +43,23 @@ function Message({ initialColor }) {
   const [color, setColor] = useState(initialColor); }
 ```
 
+**Single source of truth =>** `For each unique piece of state, you will choose the component that “owns” it. This principle is also known as having a “single source of truth”. It doesn’t mean that all state lives in one place—but that for each piece of state, there is a specific component that holds that piece of information. Instead of duplicating shared state between components, lift it up to their common shared parent, and pass it down to the children that need it.`
+
+**Thinking in react =>** [https://react.dev/learn/thinking-in-react]
+
+**NOTE :** When you want to coordinate two components(coordination could be in same fashion on exactly different fashion), move their state to their common parent.
 
 
 
+-----
 
+## Preserving and Resetting State
 
+State is isolated between components. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.
 
+ => State doesn’t live inside your component’s code — it lives inside React. React keeps track of which state belongs to which component by remembering where that component is in the UI tree. Think of it like: Your component says, “I need a box to store this value.” React owns the storage boxes and puts them in the right spot in a big shelf (the render tree). When your component is rendered again, React goes to the same shelf spot and gives you your box back.
 
-
-
-
+**NOTE :** In React, each component on the screen has fully isolated state. Even if you render/useInUI this component 10 times, each component will get it's own, independent state(s).
 
 
 

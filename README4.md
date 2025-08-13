@@ -67,7 +67,7 @@ State is isolated between components. React keeps track of which state belongs t
 
 Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree]
 
-**Same component at the same position preserves state** => Even you put them inside some condition
+**Same component at the same position preserves state** 
 
 **Different components at the same position reset state** => Diff components inside some condition, switching between them will reset the state.
 

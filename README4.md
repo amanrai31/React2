@@ -108,7 +108,7 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 **reduce syntax =>** `array.reduce(function(total, currentValue, currentIndex, arr), initialValue)` => currentIndex, arr & initialValue are optional.
 
-**NOTE :** Normally, array element 0 `(index:0)` is used as `initial value`, and the iteration starts from array element 1(index: 1). If an initial value is supplied, this is used, and the iteration starts from array element 0(index :0). ( 🇮🇳)
+**NOTE :** Normally, array element 0 `(index:0)` is used as `initial value`, and the iteration starts from array element 1(index: 1). If an initial value is supplied, this is used, and the iteration starts from array element 0(index :0). (🇮🇳)
 
 If a state variable is getting updated by many event handlers, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
 
@@ -149,7 +149,8 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
       type: 'deleted',
       id: taskId,
     });
-  } function tasksReducer(tasks, action) {
+  }
+function tasksReducer(tasks, action) {          // reducer function
   switch (action.type) {
     case 'added': {
       return [
@@ -193,8 +194,12 @@ The object passes to dispatch is called `action object` => generally it should c
 
 ### 2. Write a reducer function
 
+1. Declare the current state (tasks) as the first argument.
+2. Declare the action object as the second argument.
+3. Return the next state from the reducer (which React will set the state to).
 
-
+**NOTE :** Because the reducer function takes state (tasks) as an argument, you can declare it outside of your component.
+**NOTE :** By convention we use switch statements inside reducers. 
 
 
 

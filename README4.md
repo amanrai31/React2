@@ -102,6 +102,61 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 </div>
 ```
 
+-----
+
+## Extracting State Logic into a Reducer
+
+**reduce syntax =>** `array.reduce(function(total, currentValue, currentIndex, arr), initialValue)` => currentIndex, arr & initialValue are optional.
+
+**NOTE :** Normally, array element 0 (index -0) is used as initial value, and the iteration starts from array element 1(index -1). If an initial value is supplied, this is used, and the iteration starts from array element 0. 
+
+If a state variable is getting updated by many event handlers, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
+
+1. Move from setting state to dispatching actions.
+2. Write a reducer function.
+3. Use the reducer from your component.
+
+### 1. Move from setting state to dispatching actions 
+
+Your event handlers currently specify what to do by setting state. Remove all the state setting logic. What you are left with are three event handlers.
+
+handleAddTask(text) is called when the user presses “Add”.
+handleChangeTask(task) is called when the user toggles(checkbox - done or not) a task or presses “Save”.
+handleDeleteTask(taskId) is called when the user presses “Delete”.
+
+=> In reducer instead of telling React “what to do” by setting state (setState f/n), you specify “what the user just did” by dispatching “actions” from your event handlers. 
+
+```js
+function handleAddTask(text) {
+  dispatch({
+    type: 'added',
+    id: nextId++,
+    text: text,
+  });
+}
+
+function handleChangeTask(task) {
+  dispatch({
+    type: 'changed',
+    task: task,                         // task is an element from intialTasks array => {id: 1, text: 'Watch BreakingBad show', done: false},
+  });
+}
+
+function handleDeleteTask(taskId) {
+  dispatch({
+    type: 'deleted',
+    id: taskId,
+  });
+}
+```
+
+The object passes to dispatch is called `action object` => generally it should contain the minimal information about what happened.
+
+**NOTE :** An action object can have any shape. By convention, it is common to give it a `string type` that describes what happened, and pass any additional information in other fields.
+
+### 2. Write a reducer function
+
+
 
 
 

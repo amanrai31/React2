@@ -108,7 +108,7 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 **reduce syntax =>** `array.reduce(function(total, currentValue, currentIndex, arr), initialValue)` => currentIndex, arr & initialValue are optional.
 
-**NOTE :** Normally, array element 0 (index -0) is used as initial value, and the iteration starts from array element 1(index -1). If an initial value is supplied, this is used, and the iteration starts from array element 0. 
+**NOTE :** Normally, array element 0 `(index:0)` is used as `initial value`, and the iteration starts from array element 1(index: 1). If an initial value is supplied, this is used, and the iteration starts from array element 0(index :0). ( 🇮🇳)
 
 If a state variable is getting updated by many event handlers, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
 
@@ -127,27 +127,64 @@ handleDeleteTask(taskId) is called when the user presses “Delete”.
 => In reducer instead of telling React “what to do” by setting state (setState f/n), you specify “what the user just did” by dispatching “actions” from your event handlers. 
 
 ```js
-function handleAddTask(text) {
-  dispatch({
-    type: 'added',
-    id: nextId++,
-    text: text,
-  });
+const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+
+  function handleAddTask(text) {
+    dispatch({
+      type: 'added',
+      id: nextId++,
+      text: text,
+    });
+  }
+
+  function handleChangeTask(task) {
+    dispatch({
+      type: 'changed',
+      task: task,                     // task is an element from intialTasks array => {id: 1, text: 'Watch BreakingBad show', done: false},
+    });
+  }
+
+  function handleDeleteTask(taskId) {
+    dispatch({
+      type: 'deleted',
+      id: taskId,
+    });
+  } function tasksReducer(tasks, action) {
+  switch (action.type) {
+    case 'added': {
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
+    }
+    case 'changed': {
+      return tasks.map((t) => {
+        if (t.id === action.task.id) {
+          return action.task;
+        } else {
+          return t;
+        }
+      });
+    }
+    case 'deleted': {
+      return tasks.filter((t) => t.id !== action.id);
+    }
+    default: {
+      throw Error('Unknown action: ' + action.type);
+    }
+  }
 }
 
-function handleChangeTask(task) {
-  dispatch({
-    type: 'changed',
-    task: task,                         // task is an element from intialTasks array => {id: 1, text: 'Watch BreakingBad show', done: false},
-  });
-}
-
-function handleDeleteTask(taskId) {
-  dispatch({
-    type: 'deleted',
-    id: taskId,
-  });
-}
+let nextId = 3;
+const initialTasks = [
+  {id: 0, text: 'Visit Kafka Museum', done: true},
+  {id: 1, text: 'Watch a puppet show', done: false},
+  {id: 2, text: 'Lennon Wall pic', done: false},
+];
 ```
 
 The object passes to dispatch is called `action object` => generally it should contain the minimal information about what happened.

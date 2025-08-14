@@ -199,9 +199,16 @@ The object passes to dispatch is called `action object` => generally it should c
 3. Return the next state from the reducer (which React will set the state to).
 
 **NOTE :** Because the reducer function takes state (tasks) as an argument, you can declare it outside of your component.
-**NOTE :** By convention we use switch statements inside reducers. 
 
+**NOTE :** By convention we use switch statements inside reducers. And wrap each case inside {}.
 
+### Use the reducer from your component
+
+```js
+import { useReducer } from 'react';
+const [tasks, setTasks] = useState(initialTasks); // Replace this with reducer
+const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+```
 
 
 

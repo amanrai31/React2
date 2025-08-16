@@ -290,6 +290,7 @@ Reducers let you consolidate a component’s state update logic. Context lets yo
 Reducer + context => [https://react.dev/learn/scaling-up-with-reducer-and-context#moving-all-wiring-into-a-single-file]
 
 - You can combine reducer with context to let any component read and update state above it.
+
 - To provide state and the dispatch function to components below:
 1. Create two contexts (for state and for dispatch functions).
 2. Provide both contexts from the component that uses the reducer.
@@ -299,7 +300,6 @@ Reducer + context => [https://react.dev/learn/scaling-up-with-reducer-and-contex
   - You can export a component like TasksProvider that provides context.
   - You can also export custom Hooks like useTasks and useTasksDispatch to read it.
 
-You can have many context-reducer pairs like this in your app.
 
 
 

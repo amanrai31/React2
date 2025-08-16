@@ -279,7 +279,35 @@ Context is very tempting to use! However, this also means it’s too easy to ove
 
 1. Create and export it with `export const MyContext = createContext(defaultValue)`.
 2. Pass it to the ` const theme/user/route = useContext(MyContext) ` Hook to read it in any child component, no matter how deep.
-3. Wrap children into ` <MyContext value={...}>  </MyContext> ` to provide it from a parent.
+3. Wrap children into ` <MyContext value={...}>  </MyContext> ` to provide it from a parent. => We can update value using useState or by any means here.
+
+----
+
+## Scaling Up with Reducer and Context
+
+Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+
+Reducer + context => [https://react.dev/learn/scaling-up-with-reducer-and-context#moving-all-wiring-into-a-single-file]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

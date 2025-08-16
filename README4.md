@@ -210,12 +210,24 @@ const [tasks, setTasks] = useState(initialTasks); // Replace this with reducer
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
+The useReducer Hook takes two arguments:
+
+1. A reducer function
+2. An initial state
+   
+And it returns:
+
+1. A stateful value
+2. A dispatch function (to “dispatch” user actions to the reducer)
 
 
+**Keep these two tips in mind when writing reducers:**
 
+1. Reducers must be pure. Similar to state updater functions, reducers run during rendering! (Actions are queued until the next render.) This means that reducers must be pure—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update objects and arrays without mutations.
 
+2. Each action describes a single user interaction, even if that leads to multiple changes in the data. 
 
-
+** NOTE : `useImmerReducer` lets you mutate the state with push or arr[i] = assignment**
 
 
 

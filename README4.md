@@ -229,7 +229,19 @@ And it returns:
 
 **NOTE : `useImmerReducer` lets you mutate the state with push or arr[i] = assignment**
 
+```js
+// useReducer from scratch
+import { useState } from 'react';
 
+export function useReducer(reducer, initialState) {
+  const [state, setState] = useState(initialState);
+  function dispatch(obj){                             //obj is action object
+    const nextState = reducer(state,obj);
+    setState(nextState);
+  }
+  return [state, dispatch];
+}
+```
 
 
 

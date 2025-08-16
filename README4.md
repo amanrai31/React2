@@ -227,7 +227,7 @@ And it returns:
 
 2. Each action describes a single user interaction, even if that leads to multiple changes in the data. 
 
-** NOTE : `useImmerReducer` lets you mutate the state with push or arr[i] = assignment**
+**NOTE : `useImmerReducer` lets you mutate the state with push or arr[i] = assignment**
 
 
 

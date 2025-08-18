@@ -51,12 +51,102 @@ const myRef = useRef(null);
 
 **NOTE :** While DOM manipulation is the most common use case for `refs`, the useRef Hook can be used for storing other things outside React, like timer IDs.
 
+```js
+import { useRef, useState } from "react";
+
+export default function CatFriends() {
+  const itemsRef = useRef(null);
+  const [catList, setCatList] = useState(setupCatList);
+
+  function scrollToCat(cat) {
+    const map = getMap();
+    const node = map.get(cat);
+    node.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }
+
+  function getMap() {
+    if (!itemsRef.current) {
+      // Initialize the Map on first usage.
+      itemsRef.current = new Map();
+    }
+    return itemsRef.current;
+  }
+
+  return (
+    <>
+      <nav>
+        <button onClick={() => scrollToCat(catList[0])}>Neo</button>
+        <button onClick={() => scrollToCat(catList[5])}>Millie</button>
+        <button onClick={() => scrollToCat(catList[9])}>Bella</button>
+      </nav>
+      <div>
+        <ul>
+          {catList.map((cat) => (
+            <li
+              key={cat}
+              ref={(node) => {
+                const map = getMap();
+                map.set(cat, node);
+                return () => {            // The returned function is a cleanup function: React calls this when the component unmounts or when the ref changes (Prevent memory leak)
+                  map.delete(cat);
+                };
+              }}
+            >
+              <img src={cat} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
+
+function setupCatList() {
+  const catList = [];
+  for (let i = 0; i < 10; i++) {
+    catList.push("https://loremflickr.com/320/240/cat?lock=" + i);
+  }
+
+  return catList;
+}
+
+```
+ Above => `itemsRef` doesn’t hold a single DOM node. Instead, it holds a Map from item ID to a DOM node
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MORE ON REACT (REACT REFERNCE) => [https://react.dev/reference/react]
 
 
 

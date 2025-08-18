@@ -39,9 +39,17 @@ Try challenge 4 => [https://react.dev/learn/referencing-values-with-refs#challen
 
 ## Manipulating the DOM with Refs
 
+React automatically updates the DOM to match your render output, so your components won’t often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React e.g. - to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a `ref` to the DOM node.
 
+```js
+import {useRef} from 'react';
+const myRef = useRef(null);
+<div ref ={myRef}>
+```
 
+- When React creates a DOM node for this `<div>`, React will put a `reference to this node` into `myRef.current`. You can then access this DOM node from your event handlers and use the built-in browser APIs defined on it. e.g. - `myRef.current.scrollIntoView();`, `myRef.current.focus()`
 
+**NOTE :** While DOM manipulation is the most common use case for `refs`, the useRef Hook can be used for storing other things outside React, like timer IDs.
 
 
 

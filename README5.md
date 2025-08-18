@@ -91,7 +91,7 @@ export default function CatFriends() {
               ref={(node) => {
                 const map = getMap();
                 map.set(cat, node);
-                return () => {            // The returned function is a cleanup function: React calls this when the component unmounts or when the ref changes (Prevent memory leak)
+                return () => {            // The returned f/n is a cleanup f/n: React calls this when the component unmounts or when the ref changes (Prevent memory leak)
                   map.delete(cat);
                 };
               }}
@@ -115,9 +115,36 @@ function setupCatList() {
 }
 
 ```
+
  Above => `itemsRef` doesn’t hold a single DOM node. Instead, it holds a Map from item ID to a DOM node
 
 
+### Accessing another component’s DOM nodes 
+
+We can pass refs from parent component to child components just like any other prop.
+
+### When React attaches the refs
+
+In React, every update is split in two phases:
+
+- During render, React calls your components to figure out what should be on the screen.
+- During commit, React applies changes to the DOM.
+
+In general, you don’t want to access refs during rendering. During the first render, the DOM nodes have not yet been created, so ref.current will be null. And during the rendering of updates, the DOM nodes haven’t been updated yet. So it’s too early to read them.
+
+Before updating the DOM, React sets the affected `ref.current` values to `null`. After updating the DOM(commit), React immediately sets them to the corresponding DOM nodes.
+
+**NOTE :** Usually, you will access refs from event handlers. If you want to do something with a ref, but there is no particular event to do it in, you might need an Effect.
+
+**Flushing state updates synchronously with flushSync** => `import { flushSync } from 'react-dom'`. Immediately apply state updates synchronously instead of batching them. It's part of React's concurrent features control.
+
+**NOTE :** Use sparingly: flushSync can hurt performance by preventing React's optimizations. Synchronous rendering: Updates happen immediately, blocking the main thread. Emergency escape hatch: Only use when you absolutely need immediate DOM updates
+
+### Best practices for DOM manipulation with refs
+
+Refs are an escape hatch. You should only use them when you have to “step outside React”. e.g. managing focus, scroll position, play, pause or calling browser APIs(timer etc) that React does not expose.
+
+However, if you try to modify the DOM manually, you can risk conflicting with the changes React is making.
 
 
 
@@ -130,23 +157,12 @@ function setupCatList() {
 
 
 
+-----
+
+**Again :** If you want to use plain JS variable/array etc. inside component, make sure that is dependent on or should have some short of relation with state so that when component re-renders then the variable is in sync with state otherwise it will reset it's value on every render. OR we can declear it outside the component(that way it will be immune to component renders).
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-MORE ON REACT (REACT REFERNCE) => [https://react.dev/reference/react]
+**MORE ON REACT (REACT REFERNCE)** => [https://react.dev/reference/react]
 
 
 

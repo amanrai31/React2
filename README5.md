@@ -146,18 +146,34 @@ Refs are an escape hatch. You should only use them when you have to “step outs
 
 However, if you try to modify the DOM manually, you can risk conflicting with the changes React is making.
 
-
-
-
-
-
-
-
-
-
-
-
 -----
+
+## Synchronizing with Effects
+
+Some components need to synchronize with external systems. e.g., you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Effects let you run some code after rendering so that you can synchronize your component with some system outside of React.
+
+Two types of logic inside React components:
+
+- Rendering code lives at the top level of your component. This is where you take the props and state, transform them, and return the JSX you want to see on the screen. Rendering code must be pure.
+
+- Event handlers are nested f/n inside your components that do things rather than just calculate them. An event handler might update an input field, submit an HTTP POST request to buy a product, or navigate the user to another screen. Event handlers contain `side effects` (they change the program’s state when triggered)
+
+Now consider a ChatRoom component that must connect to the chat server whenever it’s visible on the screen. Connecting to a server is not a pure calculation (it’s a side effect) so it can’t happen during rendering. Effects run at the end of a commit after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library).
+
+**NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect` is side effect caused by rendering.
+
+**You might not need an Effect :** Effects are typically used to “step out” of your React code and synchronize with some external system (browser API, 3rd party widgets, n/w etc)
+
+### Write an Effect
+
+1. Declare an effect (Call it at the top of component)
+2. Specify the Effect dependencies
+3. Add cleanup if needed
+
+
+
+
+
 
 **Again :** If you want to use plain JS variable/array etc. inside component, make sure that is dependent on or should have some short of relation with state so that when component re-renders then the variable is in sync with state otherwise it will reset it's value on every render. OR we can declear it outside the component(that way it will be immune to component renders).
 

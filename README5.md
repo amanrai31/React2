@@ -297,9 +297,27 @@ Writing fetch calls inside Effects is a popular way to fetch data, especially in
 **SOLUTION for the above problem :**
 
 - If you use a framework, use its built-in data fetching mechanism.
-- Otherwise, consider using or building a client-side cache. Popular open source solutions include React Query, useSWR, and React Router 6.4+. 
+- Otherwise, consider using or building a client-side cache. Popular open source solutions include React Query, useSWR, and React Router 6.4+.
+
+How clouser works if you do not clearTimeout => [https://react.dev/learn/synchronizing-with-effects#putting-it-all-together]
 
 **NOTE :** Api call to buy something, add to cart etc should not be in useEffect as revisting the page can cause BUYING an item, these apis call should happen in event handlers, not in Effect 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -----

@@ -175,6 +175,13 @@ Now consider a ChatRoom component that must connect to the chat server whenever 
 
 
 
+
+
+
+
+
+-----
+
 **Again :** If you want to use plain JS variable/array etc. inside component, make sure that is dependent on or should have some short of relation with state so that when component re-renders then the variable is in sync with state otherwise it will reset it's value on every render. OR we can declear it outside the component(that way it will be immune to component renders).
 
 

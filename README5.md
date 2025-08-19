@@ -160,7 +160,7 @@ Two types of logic inside React components:
 
 Now consider a ChatRoom component that must connect to the chat server whenever it’s visible on the screen. Connecting to a server is not a pure calculation (it’s a side effect) so it can’t happen during rendering. Effects run at the end of a commit after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library).
 
-**NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect` is side effect caused by rendering.  If there’s no external system and you only want to adjust some state based on other state, you might not need an Effect.(Also can cause infinite loop if no dependency given)
+**NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect is "side effect" caused by rendering`.  If there’s no external system and you only want to adjust some state based on other state, you might not need an Effect.(Also can cause infinite loop if no dependency given)
 
 **You might not need an Effect :** Effects are typically used to “step out” of your React code and synchronize with some external system (browser API, 3rd party widgets, n/w etc)
 
@@ -238,7 +238,7 @@ useEffect(() => {
 
 - React will call your cleanup function each time before the Effect runs again, and one final time when the component unmounts (gets removed).
 
-**NOTE :** In `development` (not in prod), react remount component, React verifies that navigating away and back would not break the code. Disconnecting and then connecting again is exactly what should happen! 
+**NOTE :** In `development` (not in prod), react re-mount component(mount,navigate back,again mount), React verifies that navigating away and back would not break the code. Disconnecting and then connecting again is exactly what should happen! 
 
 **IMPORTANT NOTE :** We use useEffect when the component needs to stay in sync with something external. If you subscribe to something, you must clean it up when unmounting, otherwise you leak resources.
 
@@ -260,14 +260,46 @@ useEffect(() => {
 }, [zoomLevel]);
 ```
 
+### Subscribing to events 
 
+```js
+// If Effect subscribes to something, the cleanup function should unsubscribe:
+useEffect(() => {
+  function handleScroll(e) {
+    console.log(window.scrollX, window.scrollY);
+  }
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+```
 
+### Triggering animations 
 
+```js
+// If Effect animates something in, the cleanup function should reset the animation to the initial values:
+useEffect(() => {
+  const node = ref.current;
+  node.style.opacity = 1; // Trigger the animation
+  return () => {
+    node.style.opacity = 0; // Reset to the initial value
+  };
+}, []);
+```
+### Fetching data
 
+Writing fetch calls inside Effects is a popular way to fetch data, especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
 
+- Effects don’t run on the server (server-rendered HTML comes with no data then client downloads JS just to know that now it needs to load the data. not-efficient)
+- Fetching directly in Effects makes it easy to create “network waterfalls”.
+- Fetching directly in Effects usually means you don’t preload or cache data. (on re-mount it would have to fetch the data again.)
+- Race condition => Learn about race condition => [https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect]
 
+**SOLUTION for the above problem :**
 
+- If you use a framework, use its built-in data fetching mechanism.
+- Otherwise, consider using or building a client-side cache. Popular open source solutions include React Query, useSWR, and React Router 6.4+. 
 
+**NOTE :** Api call to buy something, add to cart etc should not be in useEffect as revisting the page can cause BUYING an item, these apis call should happen in event handlers, not in Effect 
 
 
 -----

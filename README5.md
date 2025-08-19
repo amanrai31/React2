@@ -251,7 +251,7 @@ useEffect(() => {
 
 ### Controlling non-React widgets 
 
-Sometimes you need to add UI widgets that aren’t written in React. e.g., let’s say you’re adding a map component to your page. It has a setZoomLevel() method, and you’d like to keep the zoom level in sync with a zoomLevel state variable in your React code. 
+Sometimes you need to add UI widgets that aren’t written in React. e.g., let’s say you’re adding a map component to your page. It has a setZoomLevel() method, and you’d like to keep the zoom level in sync with a zoomLevel state variable in your React code. Note that there is no cleanup needed in this case.
 
 ```js
 useEffect(() => {

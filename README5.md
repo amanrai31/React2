@@ -160,16 +160,108 @@ Two types of logic inside React components:
 
 Now consider a ChatRoom component that must connect to the chat server whenever it’s visible on the screen. Connecting to a server is not a pure calculation (it’s a side effect) so it can’t happen during rendering. Effects run at the end of a commit after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library).
 
-**NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect` is side effect caused by rendering.
+**NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect` is side effect caused by rendering.  If there’s no external system and you only want to adjust some state based on other state, you might not need an Effect.(Also can cause infinite loop if no dependency given)
 
 **You might not need an Effect :** Effects are typically used to “step out” of your React code and synchronize with some external system (browser API, 3rd party widgets, n/w etc)
 
-### Write an Effect
+### Write an Effect  (Declare, dependencyArray, cleanup)
 
-1. Declare an effect (Call it at the top of component)
-2. Specify the Effect dependencies
-3. Add cleanup if needed
+#### 1. Declare an effect (Call it at the top of component)
 
+```js
+import { useState, useRef, useEffect } from 'react';
+
+function VideoPlayer({ src, isPlaying }) {
+  const ref = useRef(null);
+
+  if (isPlaying) {
+    ref.current.play();  // Calling these while rendering isn't allowed.
+  } else {
+    ref.current.pause(); // Also, this crashes.
+  }
+
+  return <video ref={ref} src={src} loop playsInline />;
+}
+
+export default function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  return (
+    <>
+      <button onClick={() => setIsPlaying(!isPlaying)}>
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
+      <VideoPlayer
+        isPlaying={isPlaying}
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      />
+    </>
+  );
+}
+```
+This code is incorrect cuz it tries to do something with the DOM node during rendering. In React, rendering should be a pure calculation of JSX and should not contain side effects like modifying the DOM. There isn’t a DOM node yet to call play() or pause() on.
+
+Wrap the above if & else conditions inside useEffect. By wrapping the DOM update in an Effect, you let React update the screen first. Then your Effect runs.
+
+**NOTE :** The “external system” we synchronized to React state was the browser media API. We can use a similar approach to wrap legacy non-React code (like jQuery plugins) into declarative React components.
+
+#### 2. Specify the Effect dependencies
+
+- The dependency array can contain multiple dependencies. React will only skip re-running the Effect if all of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the `Object.is` comparison.
+
+```js
+useEffect(() => {
+  // This runs after every render
+});
+
+useEffect(() => {
+  // This runs only on mount (when the component appears)
+}, []);
+
+useEffect(() => {
+  // This runs on mount *and also* if either a or b have changed since the last render
+}, [a, b]);
+```
+
+- We can omit `ref` inside depn. array as ref do not change between re-render, however if `ref` is passed from parent then include that in depn. array cuz we can't know whether the parent component always passes the same ref, or passes one of several refs conditionally
+
+#### 3. Add cleanup if needed
+
+```js
+ useEffect(() => {
+    const connection = createConnection();
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, []);
+```
+
+- React will call your cleanup function each time before the Effect runs again, and one final time when the component unmounts (gets removed).
+
+**NOTE :** In `development` (not in prod), react remount component, React verifies that navigating away and back would not break the code. Disconnecting and then connecting again is exactly what should happen! 
+
+**IMPORTANT NOTE :** We use useEffect when the component needs to stay in sync with something external. If you subscribe to something, you must clean it up when unmounting, otherwise you leak resources.
+
+#### Use cleanup if your effect:
+
+- attaches something external (event listener, subscription, connection, timer)
+
+- allocates a resource (object, library, animation)
+
+- runs continuously until explicitly stopped.
+
+- If the effect is just computing a value or triggering one-time DOM/API action, cleanup isn’t needed.
+
+### Controlling non-React widgets 
+
+Sometimes you need to add UI widgets that aren’t written in React. e.g., let’s say you’re adding a map component to your page. It has a setZoomLevel() method, and you’d like to keep the zoom level in sync with a zoomLevel state variable in your React code. 
+
+```js
+useEffect(() => {
+  const map = mapRef.current;
+  map.setZoomLevel(zoomLevel);
+}, [zoomLevel]);
+```
 
 
 

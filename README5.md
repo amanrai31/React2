@@ -245,11 +245,8 @@ useEffect(() => {
 #### Use cleanup if your effect:
 
 - attaches something external (event listener, subscription, connection, timer)
-
 - allocates a resource (object, library, animation)
-
 - runs continuously until explicitly stopped.
-
 - If the effect is just computing a value or triggering one-time DOM/API action, cleanup isn’t needed.
 
 ### Controlling non-React widgets 

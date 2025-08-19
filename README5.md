@@ -210,15 +210,15 @@ Wrap the above if & else conditions inside useEffect. By wrapping the DOM update
 
 ```js
 useEffect(() => {
-  // This runs after every render
+  // effect runs on every render, cleanup runs before each run and on unmount.
 });
 
 useEffect(() => {
-  // This runs only on mount (when the component appears)
+  // effect runs once, cleanup runs on unmount only.
 }, []);
 
 useEffect(() => {
-  // This runs on mount *and also* if either a or b have changed since the last render
+  // This runs on mount *and also* if either a or b have changed since the last render( also cleanup runs before re-running and on unmount.)
 }, [a, b]);
 ```
 

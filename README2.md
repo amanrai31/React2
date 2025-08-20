@@ -69,6 +69,8 @@ JSX turns into JS & each element is object and `attributes` written in JSX becom
 
 **NOTE :** Inline style properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as <ul style={{ backgroundColor: 'black' }}>  in your component.
 
+**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `prop` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `prop` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
+
 -----
 
 ## Passing prop to a component

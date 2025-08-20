@@ -69,15 +69,13 @@ JSX turns into JS & each element is object and `attributes` written in JSX becom
 
 **NOTE :** Inline style properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as <ul style={{ backgroundColor: 'black' }}>  in your component.
 
-**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `prop` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `prop` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
-
 -----
 
 ## Passing prop to a component
 
 React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. We can pass any JS value through them including object, array & function
 
-**NOTE :**  React component functions accept a single argument, a props object.
+**NOTE :**  React component functions accept a single argument, a `props` object.
 
 ```js
 function Avatar({ person, size =100 }) {    // This syntax is “destructuring”(same as below) and is equivalent to reading properties from a f/n parameter. Also we can give default value for a prop.
@@ -114,7 +112,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 
 **NOTE :**  props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JS engine will reclaim the memory taken by them.
 
-
+**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `prop` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `prop` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
 
 -----
 

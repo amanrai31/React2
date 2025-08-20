@@ -2,7 +2,7 @@
 
 ## Component
 
-Component => React components are JS functions that return JSX markup. A component is a piece of the UI that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+Component => React components are JS functions that return JSX markup. A component is a piece of the UI that has its own logic and appearance. A component can be as small as a button or as large as an entire page.
 
 **NOTE :** React component names must always start with a capital letter, while HTML tags must be lowercase.
 
@@ -35,7 +35,7 @@ There are two primary ways to export values with JS: `default exports` and `name
 But you can use `default exports` OR `named exports` OR `both of them(MIXED)` in the same file. A file can have `no more than one default export`, but it can have as many named exports as you like.
 
 
-- Default => Export statement => `export default function Button() {}` || Import statement => `import Button from './Button.js';` (While importing we can use any name instead of Button)
+- Default => Export statement => `export default function Button() {}` || Import statement => `import Button from './Button.js';` (While importing, we can use any name instead of Button)
 
 - Named => Export statement => `export function Button() {}` || Import statement => `import {Button} from './Button.js';` (While importing we must have to give Exact name which is exported, that's why they are `named export`)
 
@@ -92,7 +92,7 @@ function Avatar(props) {
 
 ```
 
-#### Passing JSX as childern
+#### Passing JSX as children
 
 ```js
 function Card({ children }) {     // Will recive Avatar in a prop called children
@@ -105,7 +105,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 ```
 ```js
 <Card>
-  <Avatar />        // equivalent to <div> <img/> </div>. Also we can pass any arbitary text instead of Avatar, Card component will wrap this too.                 
+  <Avatar />        // equivalent to <div> <img/> </div>. Also we can pass any arbitrary text instead of Avatar, Card component will wrap this too.                 
 </Card>
 
 ```
@@ -133,7 +133,7 @@ function App() {
 ```
 **NOTE :**  props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JS engine will reclaim the memory taken by them.
 
-**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `props` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `props` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
+**NOTE :** When we pass prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `props` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `props` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
 
 -----
 
@@ -160,7 +160,7 @@ const listItems = chemists.map(person =>
 
 **IMPORTANT NOTE :** JSX elements directly inside a map() call always need keys.
 
-**IMPORTANT NOTE :** Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen key helps React infer what exactly has happened, and make the correct updates to the DOM tree. So include key in DATA/DB
+**IMPORTANT NOTE :** Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen key helps React infer what exactly has happened and make the correct updates to the DOM tree. So include key in DATA/DB
 
 For more clarity(Why unique key important) => [https://codesandbox.io/p/devbox/uniquekey-j8m9py?file=%2Fsrc%2FApp.tsx]
 
@@ -201,7 +201,7 @@ export default function App() {
 ```
 
 ```js
-// Impure f/n => Can produce diffrent JSX even for the same input
+// Impure f/n => Can produce different JSX even for the same input
 
 let guest = 0;
 
@@ -227,7 +227,7 @@ React offers a “Strict Mode” in which it calls each component’s function t
 
 **NOTE :** However, it’s completely fine to change variables and objects that you’ve just created while rendering(inside the function itself).
 
-**NOTE :** Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.(They have to change something which is out of thier scope)
+**NOTE :** Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.(They have to change something which is out of their scope)
 
 **NOTE :** You should not mutate any of the inputs that your components use for rendering. That includes `props`, `state`, and `context`. To update the screen, “set” state instead of mutating preexisting objects.
 
@@ -237,7 +237,7 @@ React offers a “Strict Mode” in which it calls each component’s function t
 
 ## UI as a tree
 
-Trees are a relationship model between items and UI is often represented using tree structures. Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components(across a single render) in a React app called Render Tree.
+Trees are a relationship model between items and UI is often represented using tree structures. Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components(across a single render) in a React app called the Render Tree.
 
 The tree is composed of nodes, each of which represents a component. like `App`, `ProfileCard`, `Table` etc. The root node in React render tree is the root component of the app it could be `Index`, `Main`, `App` oe anything.
 
@@ -248,9 +248,9 @@ The tree is composed of nodes, each of which represents a component. like `App`,
 
 In production, there is typically a build step that will bundle all the necessary JS to ship to the client. The tool responsible for this is called a bundler, and bundlers will use the dependency tree to determine what modules should be included.
 
-**Differnce :** The render tree only encapsulates components. But Dependency tree also Non-component modules.
+**Difference:** The render tree only encapsulates components. But the Dependency tree also includes Non-component modules.
 
-**NOTE :** If `component A` recives `component B` as child(prop) it does not need to import `component B`
+**NOTE :** If `component A` receives `component B` as a child(prop) it does not need to import `component B`
 
 
 

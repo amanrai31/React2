@@ -112,7 +112,7 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 
 **NOTE :**  props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JS engine will reclaim the memory taken by them.
 
-**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `prop` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `prop` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
+**NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `props` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `props` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.
 
 -----
 

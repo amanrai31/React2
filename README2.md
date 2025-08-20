@@ -156,7 +156,7 @@ const listItems = chemists.map(person =>
 );
 ```
 
-**NOTE :** Arrow functions implicitly return the expression right after =>, so you didn’t need a return statement. However, you must write return explicitly if your => is followed by a `{ }` curly brace!
+**NOTE :** Arrow functions implicitly return the expression right after `=>` so we do not need a return statement. However, you must write return explicitly if your => is followed by a `{ }` curly brace!
 
 **IMPORTANT NOTE :** JSX elements directly inside a map() call always need keys.
 

@@ -31,16 +31,13 @@ What browser sees => `<section>` is lowercase, so React knows we refer to an HTM
 
 ## Importing & exporting components
 
-There are two primary ways to export values with JS: `default exports` and `named exports`. So far, our examples have only used default exports. 
+There are two primary ways to export values with JS: `default exports` and `named exports`. In example have only used default exports. 
 But you can use `default exports` OR `named exports` OR `both of them(MIXED)` in the same file. A file can have `no more than one default export`, but it can have as many named exports as you like.
 
 
 - Default => Export statement => `export default function Button() {}` || Import statement => `import Button from './Button.js';` (While importing we can use any name instead of Button)
 
 - Named => Export statement => `export function Button() {}` || Import statement => `import {Button} from './Button.js';` (While importing we must have to give Exact name which is exported, that's why they are `named export`)
-
-
-**NOTE :** In your project, try to stick with one way => either `default export` or `named export`. Though we can use the mixed export too.
 
 -----
 

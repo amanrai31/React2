@@ -109,7 +109,28 @@ function Card({ children }) {     // Will recive Avatar in a prop called childre
 </Card>
 
 ```
+```js
+// If i want to render just a particular node/element of child 
+import React from 'react';
 
+function MyComponent({ children }) {
+  const childrenArray = React.Children.toArray(children);
+  return (
+    <div>
+      {childrenArray[1]}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <MyComponent>
+      <div>First child</div>
+      <div>Second child</div>  {/* Ye render hoga */}
+    </MyComponent>
+  );
+}
+```
 **NOTE :**  props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JS engine will reclaim the memory taken by them.
 
 **NOTE :** When we paas prop to a component like this - `<GreetUser name="Aman" age={25} />`. React just wrap these props/arguments in a `props` object like this => `GreetUser({ name: "Aman", age: 25 });` and inside component we destructure THE `props` object like - `function GreetUser({ name, age }) {...RETURN(JSX)...}`.

@@ -280,8 +280,6 @@ function delay(ms) {
 
 ```
 
-**IMPORATANT NOTE :** If i add updater f/n inside setter, you can assume like React is executing 1st updater f/n then set the state || execute 2nd updater f/n then set the state and so on... 
-
 - MUST READ [https://react.dev/learn/queueing-a-series-of-state-updates#challenges]
 
 -----

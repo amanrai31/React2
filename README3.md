@@ -354,6 +354,7 @@ function handleCityChange(e) {
       draft.artwork.city = e.target.value;         //updates even nested object's props.
     });
   }
+// OR we can do function handleCityChange(e) {const newCity = {...person.artwork, city}setPerson()}
 ```
 
 **IMPORTANT NOTE :** Mutating an object directly will not cause a re-render, it stores the updated value in previous render state.

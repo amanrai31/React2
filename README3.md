@@ -170,7 +170,7 @@ After you trigger a render, React calls your components to figure out what to di
 
 **NOTE :** This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on(until no more nested components). 
 
-**NOTE :** Rendering must be pure. i.e. Same input-same output (component should always return same JSX) AND It maids it's own businees (should not change any objects or variables that existed before rendering).
+**NOTE :** Rendering must be pure. i.e. Same input-same output (component should always return the same JSX) AND It should mind its own business (should not change any objects or variables that existed before rendering).
 
 **IMPORTANT NOTE :** The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree(We wil see).
 

@@ -77,7 +77,7 @@ Internally, React holds an array of state pairs for every component. It also mai
 
 ## State => A component's memory
 
-Components often need to change what’s on the screen as a result of an interaction. Also Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of `component-specific memory` is called state.
+Components often need to change what’s on the screen as a result of an interaction. Also, Components need to “remember” things: the current input value, the current image, and the shopping cart. In React, this kind of `component-specific memory` is called state.
 
 
 Why regular variable is not enough =>
@@ -108,7 +108,7 @@ const [index, setIndex] = useState(0);
 
 => It is a good idea to have multiple state variables if their state is unrelated. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it’s more convenient to have a single state variable that holds an object than state variable per field.
 
-**State is isolated and private :** State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other. Unlike props, state is fully private to the component declaring it. The parent component can’t change it. This lets you add state to any component or remove it without impacting the rest of the components.
+**State is isolated and private :** State is local to a `component instance` on the screen. In other words, if you render the same component twice, each copy will have a completely isolated state! Changing one of them will not affect the other. Unlike props, state is fully private to the component declaring it. The parent component can’t change it. This lets you add state to any component or remove it without impacting the rest of the components.
 
 ```js
 import { useState } from 'react';

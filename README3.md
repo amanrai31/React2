@@ -221,8 +221,7 @@ export default function Counter() {
     </>
   )
 }
-// If i add updater f/n inside setter like [ setNumber(()=>number + 1) ], you can assume like React is executing 1st updater f/n then
-// (value of n changed from n to n+1) set the state || execute 2nd updater f/n then set the state and so on
+
 ```
 
 - 2 main reasons =>
@@ -251,6 +250,7 @@ export default function RequestTracker() {
   async function handleClick() {
     setPending(pending + 1);
     await delay(3000);                   // Meanwhile, React continues rendering other UI updates normally.
+
     // This is a functional update. So no matter how many times pending changes in those 3 seconds, you’ll always subtract 1 from the latest state
     // If you use setPending(pending - 1); - pending is the value captured at the time when handleClick started
     setPending(pending => pending - 1);

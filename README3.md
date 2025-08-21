@@ -1,4 +1,4 @@
-# CONTENT => EVENT, STATE, 
+# CONTENT => EVENT, STATE, SNAPSHOT
 
 ## Responding to Events
 

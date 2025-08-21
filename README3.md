@@ -235,7 +235,8 @@ export default function Counter() {
 
 - React queues this function to be processed after all the other code in the event handler has run.
 - During the next render, React goes through the queue and gives you the final updated state.
-  **Then React takes the return value of your previous updater function and passes it to the next updater as n, and so on:**
+  
+**Then React takes the return value of your previous updater function and passes it to the next updater as n, and so on:**
 
 **NOTE :** After the event handler completes, React will trigger a re-render. During the re-render, React will process the queue.
 

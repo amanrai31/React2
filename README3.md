@@ -293,9 +293,9 @@ const [x, setX] = useState(0);
 setX(5)
 ```
 
-- The x state changed from 0 to 5, but the number 0 itself did not change. It’s not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JS because they are immutable(read-only). But object are mutable that is why we should not directly mutate them (We should treat them as READ-ONLY(IMMUTABLE)).
+- The x state changed from 0 to 5, but the number 0 itself did not change. It’s not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JS because they are immutable(read-only). But object are mutable that is why we should not directly mutate them.
 
-**NOTE :** We should treat any JS object `that you put into state` as `read-only`.
+**NOTE :** We should treat any JS object `that you put into state` as `read-only`(IMMUTABLE).
 
 ```js
 Red dot move with pointer/cursor

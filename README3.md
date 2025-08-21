@@ -204,7 +204,7 @@ Sometimes we have to perform multiple operations on the value before queueing th
 ### Batching => React batches state updates
 
 ```js
-// clicking the button(+3) will not increase count by 3. It only increses by 1.
+// clicking the button(+3) will not increase count by 3. It only increases by 1.
 import { useState } from 'react';
 
 export default function Counter() {
@@ -221,8 +221,8 @@ export default function Counter() {
     </>
   )
 }
-// If i add updater f/n inside setter, you can assume like React is executing 1st updater f/n then set the state || execute 2nd updater f/n then set the state and so
-// on... 
+// If i add updater f/n inside setter like [ setNumber(()=>number + 1) ], you can assume like React is executing 1st updater f/n then
+// (value of n changed from n to n+1) set the state || execute 2nd updater f/n then set the state and so on
 ```
 
 - 2 main reasons =>

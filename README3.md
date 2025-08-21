@@ -184,6 +184,8 @@ After rendering (calling) components, React will modify the DOM.
 
 **IMPORTANT NOTE :** After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as `browser rendering`, we’ll refer to it as “painting” to avoid confusion throughout the docs.
 
+**IMPORTANT NOTE :** The child will re-render by default when the parent’s state changes, `even` if that state isn’t passed as a prop. If you don’t want that, wrap the child in `React.memo`.
+
 -----
 
 ## State as a snapshot

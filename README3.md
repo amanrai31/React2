@@ -250,7 +250,7 @@ export default function RequestTracker() {
 
   async function handleClick() {
     setPending(pending + 1);
-    await delay(3000);
+    await delay(3000);                   // Meanwhile, React continues rendering other UI updates normally.
     setPending(pending => pending - 1);
     setCompleted(completed => completed + 1);
   }

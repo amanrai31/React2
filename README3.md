@@ -116,7 +116,7 @@ import { useState } from 'react';
 export default function FeedbackForm() {
   const [isSent, setIsSent] = useState(false);
   const [message, setMessage] = useState('');
-  if (isSent) {                                 // We can use ternary operator
+  if (isSent) {                                 // We can use ternary operator OR &&
     return <h1>Thank you!</h1>;
   } else {
     return (

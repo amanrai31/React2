@@ -93,7 +93,7 @@ Why regular variable is not enough =>
 **The `useState` Hook provides those two things**
 
 1. A `state variable` to retain the data between renders.
-2. A state setter function to update the variable and trigger React to render the component again.
+2. A `state setter function` to update the variable and trigger React to render the component again.
 
 ```js
 const [index, setIndex] = useState(0);

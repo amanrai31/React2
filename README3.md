@@ -71,7 +71,7 @@ Some browser events have default behavior associated with them. For example, a `
 
 **Hooks =>** Hooks—functions starting with `use`—can only be called at the top level of your components or your own Hooks. You can’t call Hooks inside conditions, loops, or other nested functions. 
 
-Hooks are special functions that are only available while React is rendering. They let you “hook into” different React features.
+Hooks are `special functions` that are only available `while React is rendering`. They let you “hook into” different React features.
 
 Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to 0 before rendering. Each time you call useState, React gives you the next state pair and increments the index. 
 

@@ -182,7 +182,7 @@ After rendering (calling) components, React will modify the DOM.
 - For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
 - For re-renders, React will apply the minimal necessary operations (calculated while rendering- if there is diff b/w renders) to make the DOM match the latest rendering output.
 
-**IMPORTANT NOTE :** After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as `browser rendering`, we’ll refer to it as “painting” to avoid confusion throughout the docs.
+**IMPORTANT NOTE :** After rendering is done and React updates the DOM, the browser will repaint the screen. Although this process is known as `browser rendering`, we’ll refer to it as “painting” to avoid confusion throughout the docs.
 
 **IMPORTANT NOTE :** The child will re-render by default when the parent’s state changes, `even` if that state isn’t passed as a prop. If you don’t want that, wrap the child in `React.memo`.
 
@@ -226,12 +226,16 @@ export default function Counter() {
 ```
 
 - 2 main reasons =>
-1. As we have discussed before each render’s state values are fixed, so the value of number inside the first render’s event handler is always 0
+1. As we have discussed before, each render’s state values are fixed, so the value of number inside the first render’s event handler is always 0
 2.  React waits until all code in the event handlers has run before processing your state updates. Re-render only happens after all these setNumber() calls. (waiter taking orders analogy). This behaviour is called **Batching** (Put all setter f/n in queue )
 
 **NOTE :** React does not batch across multiple intentional events like clicks—each click is handled separately.
 
-**Updater function** => Function inside state setter f/n. React Batches the Updater function too.(REACT Puts it in queue) (Should be pure)
+### Updater function => Function inside state setter f/n. (Should be pure)
+
+- React queues this function to be processed after all the other code in the event handler has run.
+- During the next render, React goes through the queue and gives you the final updated state.
+  **Then React takes the return value of your previous updater function and passes it to the next updater as n, and so on:**
 
 **NOTE :** After the event handler completes, React will trigger a re-render. During the re-render, React will process the queue.
 

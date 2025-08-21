@@ -336,7 +336,8 @@ export default function MovingDot() {
 ```
 
 ```js
-function handleFirstNameChange(e) { setPerson({ ...person, firstName: e.target.value}); } // Ya we can do like const newPerson = {...person}; newPerson.firstName: e.target.value; setPerson(newPerson)
+function handleFirstNameChange(e) { setPerson({ ...person, firstName: e.target.value}); }
+// Yes we can do like const newPerson = {...person}; newPerson.firstName: e.target.value; setPerson(newPerson)
 ```
 **Immer :** We can use immer library to flat & update nested objects.
 ```js

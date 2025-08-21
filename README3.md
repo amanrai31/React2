@@ -30,7 +30,7 @@ We can Pass event handlers as props => it’s common for components like buttons
 
 **NOTE :** Event handlers are defined inside a component, so they can access props.
 
-### Event propagation
+### Event propagation/bubbles
 
 Event handlers will also catch events from any children your component might have. We say that an event “bubbles” or “propagates” up the tree: it starts with where the event happened, and then goes up the tree.
 
@@ -38,7 +38,7 @@ Event handlers will also catch events from any children your component might hav
 function Button({ onClick, children }) {
   return (
     <button onClick={e => {
-      e.stopPropagation();                      // Remove this & you will se the event bubbles.
+      e.stopPropagation();                      // Remove this & you will see the event bubbles.
       onClick();
     }}>
       {children}

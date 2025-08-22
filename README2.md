@@ -55,7 +55,7 @@ Rules of JSX =>
 
 **NOTE :** This empty tag`<></>` is called a Fragment. Fragments let you group things without leaving any trace in the browser HTML tree. JSX looks like HTML, but under the hood it is transformed into plain JS objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
 
-2. Close all the tags => self-closing tags `<img />` || wrapper tags `<li></li>`
+2. Close all the tags => self-closing tags `<img src={imageUrl} alt="Sample" />` || wrapper tags `<li></li>`
 
 3. `All things in camalCase`
 

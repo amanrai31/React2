@@ -18,5 +18,6 @@
 
 -----
 
-- 
+- Thinking about UI declaratively
+- Choosing the State Structure
 

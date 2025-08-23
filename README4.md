@@ -60,7 +60,7 @@ State is isolated between components. React keeps track of which state belongs t
 
  => State doesn’t live inside your component’s code — it lives inside React. React keeps track of which state belongs to which component by remembering where that component is in the UI tree. Think of it like: Your component says, “I need a box to store this value.” React owns the storage boxes and puts them in the right spot in a big shelf (the render tree). When your component is rendered again, React goes to the same shelf spot and gives you your box back.
 
-**NOTE :** In React, each component on the screen has fully isolated state. Even if you render/useInUI this component 10 times, each component will get it's own, independent state(s).
+**NOTE :** In React, each component on the screen has a fully isolated state. Even if you render/useInUI this component 10 times, each component will get it's own, independent state(s). `component instance`
 
 **IMPORTANT NOTE :** React will keep the state around for as long as you render the `same component` at the `same position` in the tree. When React removes a component, it destroys its state.
 

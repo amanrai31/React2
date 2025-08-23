@@ -300,7 +300,7 @@ setX(5)
 **NOTE :** We should treat any JS object `that you put into state` as `read-only`(IMMUTABLE).
 
 ```js
-Red dot move with pointer/cursor
+Red dot moves with pointer/cursor
 
 import { useState } from 'react';
 
@@ -356,10 +356,10 @@ function handleCityChange(e) {
       draft.artwork.city = e.target.value;         //updates even nested object's props.
     });
   }
-// OR we can do function handleCityChange(e) {const newCity = {...person.artwork, city}setPerson()}
+// OR we can do function handleCityChange(e) {const newCity = {...person.artwork, city:'BXR'}setPerson({...person, person.artwork:newCity})}
 ```
 
-**IMPORTANT NOTE :** Mutating an object directly will not cause a re-render, it stores the updated value in previous render state.
+**IMPORTANT NOTE :** Mutating an object directly will not cause a re-render, it stores the updated value in the previous render state.
 
 -----
 
@@ -370,13 +370,13 @@ Just like objects Arrays are mutable in JS, but you should treat them as immutab
 - Do changes on array using non-mutating methods like filter() and map(), concat, [...array], slice, toSpliced, toSort, toReverse
 - DO NOT to use => splice, push, pop || unshift, shift, reverse, sort
 
-**NOTE :** The array spread syntax[...arr] also lets you prepend(unshift) & postpend(push) an item by placing it before/after the original. If you spread 1st then add something => will act like `push`, if you add something & then spread ["aman", ...arr] => this will act like `unshift`.
+**NOTE :** The array spread syntax[...arr] also lets you prepend(unshift) & postpend(push) an item by placing it before/after the original. If you spread 1st, then add something => will act like `push`, if you add something & then spread ["aman", ...arr] => this will act like `unshift`.
 
-- use filter to delete an item from array as it creates new array.
+- use filter to delete an item from an array, as it creates a new array.
 
-Transform/Replace item in array => use new array then make change then set/change the setter function.
+Transform/Replace item in array => use new array then make a change, then set/change the setter function.
 
-**IMPORTANT NOTE :** If array is nested we cann't mutated even the `copy array` after spread [...] because spread creates shallow copy. => `useImmer` or other `raw JS concepts`
+**IMPORTANT NOTE :** If array is nested, we can't mutate even the `copy array` after spread [...] because spread creates a shallow copy. => `useImmer` or other `raw JS concepts`
 
 MORE READ ON updating object inside array => [https://react.dev/learn/updating-arrays-in-state#updating-objects-inside-arrays]
 

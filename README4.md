@@ -8,7 +8,7 @@
 4. Remove any non-essential state variables (to avoid bugs and paradoxes)
 5. Connect the event handlers to set the state
 
-- `Imperatively` vs `Declaratively`
+- `Imperatively(Manual way)` vs `Declaratively - React way(just tell what to do)`
 
 ### Remove any non-essential state variables (4th Point)
 

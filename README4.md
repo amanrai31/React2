@@ -10,7 +10,7 @@
 
 - `Imperatively` vs `Declaratively`
 
-### Remove any non-essential state variables
+### Remove any non-essential state variables (4th Point)
 
 Suppose we have a form that can be in `empty`, `typing`, `submitting`, `success`, `error`. => `Goal is to prevent the cases where the state in memory doesn’t represent any valid UI that you’d want a user to see.`
 

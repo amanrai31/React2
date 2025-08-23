@@ -4,7 +4,7 @@
 
 Event handler functions are usually defined inside your components.
 
-**NOTE :** Functions passed to event handlers must be passed, not called. `<button onClick={handleClick}> : CORRECT`. `<button onClick={handleClick()}> : INCORRECT`. When we pass f/n then react remmembers it & only calls the f/n when user click the button. But when we call the f/n inside onClick then that f/n immediatly fires during redering (without any click)
+**NOTE :** Functions passed to event handlers must be passed, not called. `<button onClick={handleClick}> : CORRECT` || `<button onClick={handleClick()}> : INCORRECT`. When we pass f/n, then React remembers it & only calls the f/n when user clicks the button. But when we call the f/n inside onClick then that f/n immediately fires during rendering (without any click)
 
 ```js
 function AlertButton({ message, children }) {
@@ -34,6 +34,8 @@ We can Pass event handlers as props => it’s common for components like buttons
 
 Event handlers will also catch events from any children your component might have. We say that an event “bubbles” or “propagates” up the tree: it starts with where the event happened, and then goes up the tree.
 
+**NOTE :** Default behavior in DOM = bubbling (child → parent → document → window).
+
 ```js
 function Button({ onClick, children }) {
   return (
@@ -62,7 +64,7 @@ export default function Toolbar() {
 }
 ```
 
-Some browser events have default behavior associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. `e.preventDefault(); => use this to stop default behaviour of browser`
+Some browser events have default behavior associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. `e.preventDefault(); => use to stop the default behaviour of browser.
 
 
 -----

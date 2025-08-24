@@ -242,7 +242,7 @@ export function useReducer(reducer, initialState) {
 }
 ```
 
-**NOTE :** In plain JS we loop over whole array in reduce f/n. In useReducer, we dispatch one action at a time i.e. array size is 1 so the reduce function only calls the callback(iterate) f/n for one time only and gives the updated/new state. 
+**NOTE :** In plain JS we loop over the whole array in reduce f/n. In useReducer, we dispatch one action at a time i.e. array size is 1 so the reduce function only calls the callback(iterate) f/n for one time only and gives the updated/new state. 
 
 -----
 
@@ -252,9 +252,9 @@ Usually, you will pass information from a parent component to a child component 
 
 **Context lets you write components that “adapt to their surroundings” and display themselves differently depending on where (or, in other words, in which context) they are being rendered.**
 
-How context works might remind you of CSS property inheritance. In CSS, you can specify color: blue for a <div>, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with color: green. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+How context works might remind you of CSS property inheritance. In CSS, you can specify color: blue for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with color: green. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
 
-In CSS, different properties like color and background-color don’t override each other. You can set all  <div>’s color to red without impacting background-color. Similarly, different React contexts don’t override each other.
+In CSS, different properties like color and background-color don’t override each other. You can set all `<div>` color to red without impacting background-color. Similarly, different React contexts don’t override each other.
 
 ### Before you use context
 

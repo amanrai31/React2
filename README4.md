@@ -1,4 +1,4 @@
-# CONTENT => Managing state
+# CONTENT => Managing state, State is tied to a position, useReducer, useContext
 
 ## Thinking about UI declaratively 
 
@@ -258,11 +258,11 @@ In CSS, different properties like color and background-color don’t override ea
 
 ### Before you use context
 
-Context is very tempting to use! However, this also means it’s too easy to overuse it. Here’s a few alternatives you should consider before using context:
+Context is very tempting to use! However, this also means it’s too easy to overuse it. Here are a few alternatives you should consider before using context:
 
 1. Start by passing props. If your components are not trivial, it’s not unusual to pass a dozen props down through a dozen components.
 
-2. Extract components and `pass JSX as children` to them. If you pass some data through many layers of intermediate components that don’t use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like posts to visual components that don’t use them directly, like <Layout posts={posts} />. Instead, make Layout take children as a prop, and render <Layout><Posts posts={posts} /></Layout>. 
+2. Extract components and `pass JSX as children` to them. If you pass some data through many layers of intermediate components that don’t use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like posts to visual components that don’t use them directly, like `<Layout posts={posts} />`. Instead, make Layout take children as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. 
 
 ### Use cases for context
 

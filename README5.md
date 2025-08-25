@@ -6,6 +6,8 @@
 
 You can access the current value of that ref through the ref.current property. This value is intentionally mutable, meaning you can both read and write to it. It’s like a secret pocket of your component that React doesn’t track. (This is what makes it an “escape hatch” from React’s one-way data flow)
 
+**Unidirectional flow of data in React :** 1. State lives in one place (the owner). 2. Data flows down from `owner → children`. 3. Children never mutate state directly. Instead, they call a function to request changes.
+
 ```js
 let ref = useRef(0);  // you could point to anything: a string, an object, or even a function. 
 

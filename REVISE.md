@@ -27,4 +27,5 @@
 
 -----
 
+- ESCAPE HATCHES (step outside React and communicate with external APIs)
 - 

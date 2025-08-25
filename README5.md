@@ -35,7 +35,7 @@ We will use a ref when your component needs to “step outside” React and comm
 - storing & manupulating DOM Elements
 - Storing other objects that aren’t necessary to calculate the JSX.
 
-Try challenge 4 => [https://react.dev/learn/referencing-values-with-refs#challenges]
+Try challenge 3 & 4 => [https://react.dev/learn/referencing-values-with-refs#challenges]
 
 -----
 

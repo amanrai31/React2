@@ -32,10 +32,12 @@ function useRef(initialValue) {
 We will use a ref when your component needs to “step outside” React and communicate with external APIs—often a browser API that won’t impact the appearance of the component.
 
 - storing timeout IDs
-- storing & manupulating DOM Elements
+- storing & manipulating DOM Elements
 - Storing other objects that aren’t necessary to calculate the JSX.
 
 Try challenge 3 & 4 => [https://react.dev/learn/referencing-values-with-refs#challenges]
+
+**Why using plain JS variable to store timer IDs won't work =>** Every render of the component creates a new execution context. If you run setTimeout again in the new render, it will return a new unique ID (browser increments them). The old timeoutID is lost (because that variable existed in the previous render’s closure).
 
 -----
 

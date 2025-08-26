@@ -4,7 +4,7 @@
 
 `useRef` creates a mutable object (`{ current: value }`) that persists across renders without triggering re-renders.
 
-**useRef is useState, except we mutate it directly(without using setter f/n) and that’s why it doesn’t trigger render.**
+**useRef is useState, except we mutate it directly(without using setter f/n) and that’s why it doesn’t trigger render but survives re-render like state**
 
 You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. It’s like a secret pocket of your component that React doesn’t track. (This is what makes it an “escape hatch” from React’s one-way data flow)
 
@@ -18,8 +18,6 @@ let ref = useRef(0);  // you could point to anything: a string, an object, or ev
     alert('You clicked ' + ref.current + ' times!');
   }
 ```
-
-**NOTE :** Unlike state, ref is a plain JS object with the `current` property that you can read and modify. Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not!
 
 ```js
 // useRef onTop of useState

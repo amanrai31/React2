@@ -31,7 +31,11 @@
 - useRef is state variable, only diff is that we  mutate it directly(without using setter f/n) that's why it does not trigger re-render.
 - useRef (store timers & manipulate DOM) || scrollIntoView(), focus()
 - access other component DOM nodes using useRef (do not work during rendering => flushSync)
-- useEffect (If you want to do something with a ref, but there is no particular event to do it in)
+- useEffect (If you want to do something with a ref, but there is no particular event to do it in- side effect caused by rendering)
+- logic inside component (1. rendering (pure)- return JSX || 2. side effects - triggered by handlers OR rendering)
+- EFFECT => declare, dependencyArray, cleanup(leakage)
+- In dev (react mounts, unmounts & then mounts), not in prod.
+- fetching data in useEffect (n/w waterfall, no-cache, Race condition)
 
 
 

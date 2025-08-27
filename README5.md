@@ -202,7 +202,7 @@ export default function App() {
   );
 }
 ```
-This code is incorrect cuz it tries to do something with the DOM node during rendering. In React, rendering should be a pure calculation of JSX and should not contain side effects like modifying the DOM. There isn’t a DOM node yet to call play() or pause() on.
+This code is incorrect cuz it tries to do something with the DOM node during rendering. In React, rendering should be a pure calculation of JSX and should not contain side effects like modifying the DOM. `There isn’t a DOM node yet to call play() or pause() on.`
 
 Wrap the above if & else conditions inside useEffect. By wrapping the DOM update in an Effect, you let React update the screen first. Then your Effect runs.
 
@@ -293,7 +293,7 @@ useEffect(() => {
 
 Writing fetch calls inside Effects is a popular way to fetch data, especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
 
-- Effects don’t run on the server (server-rendered HTML comes with no data then client downloads JS just to know that now it needs to load the data. not-efficient)
+- Effects don’t run on the server (server-rendered HTML comes with no data then client downloads JS `just` to know that now it needs to load the data. not-efficient)
 - Fetching directly in Effects makes it easy to create “network waterfalls”.
 - Fetching directly in Effects usually means you don’t preload or cache data. (on re-mount it would have to fetch the data again.)
 - Race condition => Learn about race condition => [https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect]

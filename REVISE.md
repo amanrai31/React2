@@ -29,7 +29,7 @@
 
 - ESCAPE HATCHES (step outside React and communicate with external APIs)
 - useRef is state variable, only diff is that we  mutate it directly(without using setter f/n) that's why it does not trigger re-render.
-- useRef (timer, store & manipulate DOM) || scrollIntoView(), focus()
+- useRef (store timers & manipulate DOM) || scrollIntoView(), focus()
 - access other component DOM nodes using useRef (do not work during rendering => flushSync)
 - useEffect (If you want to do something with a ref, but there is no particular event to do it in)
 

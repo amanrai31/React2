@@ -19,14 +19,6 @@ export default function Gallery() {
 ```
 What browser sees => `<section>` is lowercase, so React knows we refer to an HTML tag. `<Profile />` starts with a capital P, so React knows that we want to use our component called Profile
 
-```html
-<section>
-  <h1>Amazing scientists</h1>
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-</section>
-```
-
 -----
 
 ## Importing & exporting components

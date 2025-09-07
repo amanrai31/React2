@@ -57,7 +57,7 @@ JSX turns into JS & each element is object and `attributes` written in JSX becom
 
 - When you want to pass a string attribute to JSX, you put it in single or double quotes. But what if you want to dynamically specify the `src` or `alt` text => Curly braces `{}` is the key & window into the JS world. 
 
-- In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. We often see this in style attribute. So the next time you see `{{` and `}}` in JSX, know that it’s nothing more than an object inside the JSX curlies!
+- In addition to strings, we use numbers and other JS expressions like variables, Objects, Arrays etc. We often see this in style attribute. So the next time you see `{{` and `}}` in JSX, know that it’s nothing more than an object inside the JSX curlies!
 
 **NOTE :** Inline style properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as <ul style={{ backgroundColor: 'black' }}>  in your component.
 

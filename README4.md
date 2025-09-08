@@ -66,10 +66,6 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 - **Different components at the same position reset state** => Diff components inside some condition, switching between them will reset the state.
 
-**NOTE :** If you want to preserve the state between re-renders, the structure of your tree needs to “match up” from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
-
-**NOTE :** You should not nest component function definitions inside some other component.
-
 ### Resetting state at the same position
 
 1. Render components in different positions
@@ -96,6 +92,10 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
       )}
 </div>
 ```
+
+**NOTE :** If you want to preserve the state between re-renders, the structure of your tree needs to “match up” from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
+
+**NOTE :** You should not nest component function definitions inside some other component.
 
 -----
 

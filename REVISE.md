@@ -13,7 +13,7 @@
 - Hooks
 - State (component memory), why regulr variable not enough, state is local to component instance(unlike prop)
 - Trigger, render & commit => SNAPSHOT
-- Queueing/Batching,
+- Queueing/Batching, Updater function
 - Updating object/ Updating Array in STATE
 
 -----

@@ -1,4 +1,4 @@
-# STORAGE => localStorage, sessionStorage, indexDB, redux/Zustand
+# STORAGE => localStorage, sessionStorage, Cookies, indexDB(cache), redux/Zustand
 
 ## LocalStorage 
 
@@ -23,4 +23,24 @@ localStorage.clear();
 ```
 
 ## SessionStorage
+
+
+
+----
+
+## IndexedDB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

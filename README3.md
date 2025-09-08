@@ -81,16 +81,16 @@ Internally, React holds an array of state pairs for every component. It also mai
 
 Components often need to change what’s on the screen as a result of an interaction. Also, Components need to “remember” things: the current input value, the current image, and the shopping cart. In React, this kind of `component-specific memory` is called state.
 
+**To update a component with new data, two things need to happen**
+
+1. Retain the data between renders.
+2. Trigger React to render the component with new data (re-rendering).
 
 Why regular variable is not enough =>
 
 1. `Local variables don’t persist between renders`=> When React renders this component a second time, it renders it from scratch—it doesn’t consider any changes to the local variables.
 2. `Changes to local variables won’t trigger renders`=> React doesn’t realize it needs to render the component again with the new data.
 
-**To update a component with new data, two things need to happen**
-
-1. Retain the data between renders.
-2. Trigger React to render the component with new data (re-rendering).
 
 **The `useState` Hook provides those two things**
 

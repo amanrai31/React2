@@ -28,7 +28,7 @@ export default function Toolbar() {
 
 We can Pass event handlers as props => it’s common for components like buttons to contain styling but not specify behavior. Instead, parent components will pass event handlers down.
 
-**NOTE :** Event handlers are defined inside a component, so they can access props.
+**NOTE :** Event handlers are defined inside a component, so they can access props. Event handler need not to be pure.
 
 ### Event propagation/bubbles
 

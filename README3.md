@@ -64,7 +64,7 @@ export default function Toolbar() {
 }
 ```
 
-Some browser events have default behavior associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. `e.preventDefault(); => use to stop the default behaviour of browser.
+Some browser events have default behavior associated with them. For example, a `<form>` submit event, which happens when a button inside of it is clicked, will reload the whole page by default. `e.preventDefault() => use to stop the default behaviour of browser`
 
 
 -----

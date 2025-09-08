@@ -56,9 +56,7 @@ function Message({ initialColor }) {
 
 ### State is tied to a position in the render tree 
 
-State is isolated between components(Component instance). React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders. Think of it like: Your component says, “I need a box to store this value.” React owns the storage boxes and puts them in the right spot in a big shelf (the render tree). When your component is rendered again, React goes to the same shelf spot and gives you your box back.
-
-**NOTE :** In React, each component on the screen has a fully isolated state. Even if you render/useInUI this component 10 times, each component will get it's own, independent state(s). `component instance`
+State is isolated between components`(Component instance)`. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders. Think of it like: Your component says, “I need a box to store this value.” React owns the storage boxes and puts them in the right spot in a big shelf (the render tree). When your component is rendered again, React goes to the same shelf spot and gives you your box back.
 
 **IMPORTANT NOTE :** React will keep the state around for as long as you render the `same component` at the `same position` in the tree. When React removes a component, it destroys its state.
 

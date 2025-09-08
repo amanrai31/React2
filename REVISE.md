@@ -11,7 +11,7 @@
 
 - Event, event bubble
 - Hooks
-- State (component memory), why regulr variable not enough, state is local to component instance
+- State (component memory), why regulr variable not enough, state is local to component instance(unlike prop)
 - Trigger, render & commit => SNAPSHOT
 - Queueing/Batching,
 - Updating object/ Updating Array in STATE

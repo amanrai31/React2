@@ -11,7 +11,7 @@
 
 - Event, event bubble
 - Hooks
-- State (component memory)
+- State (component memory), why regulr variable not enough
 - Trigger, render & commit => SNAPSHOT
 - Queueing/Batching,
 - Updating object/ Updating Array in STATE

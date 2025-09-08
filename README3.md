@@ -254,7 +254,7 @@ export default function RequestTracker() {
     await delay(3000);                   // Meanwhile, React continues rendering other UI updates normally.
 
     // This is a functional update. So no matter how many times pending changes in those 3 seconds, you’ll always subtract 1 from the latest state
-    // If you use setPending(pending - 1); - pending is the value captured at the time when handleClick started
+    // But if you use setPending(pending - 1); - pending is the value captured at the time when handleClick started
     setPending(pending => pending - 1);
     setCompleted(completed => completed + 1);
   }

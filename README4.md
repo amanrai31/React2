@@ -97,6 +97,8 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 **NOTE :** You should not nest component function definitions inside some other component.
 
+**SOLVE CHALLENGES =>** [https://react.dev/learn/preserving-and-resetting-state#challenges]
+
 -----
 
 ## Extracting State Logic into a Reducer

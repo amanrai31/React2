@@ -2,7 +2,16 @@
 
 ## You Might Not Need an Effect
 
-Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+- Why and how to remove unnecessary Effects from your components
+- How to cache expensive computations without Effects
+- How to reset and adjust component state without Effects
+- How to share logic between event handlers
+- Which logic should be moved to event handlers
+- How to notify parent components about changes
+
+**Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.**
+
+
 
 
 

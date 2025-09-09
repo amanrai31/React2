@@ -204,7 +204,7 @@ export default function App() {
   );
 }
 ```
-This code is incorrect cuz it tries to do something with the DOM node during rendering. In React, rendering should be a pure calculation of JSX and should not contain side effects like modifying the DOM. `There isn’t a DOM node yet to call play() or pause() on.`
+This code is incorrect cuz it tries to do something with the DOM node during rendering. In React, `rendering should be a pure calculation of JSX and should not contain side effects like modifying the DOM.` `There isn’t a DOM node yet to call play() or pause() on.`
 
 Wrap the above if & else conditions inside useEffect. By wrapping the DOM update in an Effect, you let React update the screen first. Then your Effect runs.
 

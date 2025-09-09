@@ -154,11 +154,13 @@ Refs are an escape hatch. You should only use them when you have to “step outs
 
 However, if you try to modify the DOM manually, you can risk conflicting with the changes React is making.
 
------
+-----------------------------------------------------------------------------------------------------------------------
 
 ## Synchronizing with Effects
 
-Some components need to synchronize with external systems. e.g., you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Effects let you run some code after rendering so that you can synchronize your component with some system outside of React.
+Effects let you run some code after rendering so that you can synchronize your component with some system outside of React. e.g. control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen.
+
+#### USE => If you want to do something with a ref, but there is no particular event to do it in- SIDE EFFECT caused by rendering
 
 Two types of logic inside React components:
 
@@ -248,12 +250,16 @@ useEffect(() => {
 
 **IMPORTANT NOTE :** We use useEffect when the component needs to stay in sync with something external. If you subscribe to something, you must clean it up when unmounting, otherwise you leak resources.
 
-#### Use cleanup if your effect:
+#### When cleanup of effect needed:
 
-- attaches something external (event listener, subscription, connection, timer) => `Ask yourself Did I attached something outside React`
+- attaches something external (event listener, subscription, socket, connection, timer) => `Ask yourself Did I attached something outside React`
 - allocates a resource (object, library, animation)
 - runs continuously until explicitly stopped.
-- If the effect is just computing a value or triggering one-time DOM/API action, cleanup isn’t needed.
+
+ #### When cleanup of effect is NOT needed::
+
+- If the effect is just computing a value or triggering one-time DOM/API action, fetching, updating state once => cleanup isn’t needed.
+
 
 ### Controlling non-React widgets 
 
@@ -295,9 +301,9 @@ useEffect(() => {
 
 Writing fetch calls inside Effects is a popular way to fetch data, especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
 
-- Effects don’t run on the server (server-rendered HTML comes with no data then client downloads JS `just` to know that now it needs to load the data. not-efficient)
+- Effects don’t run on the server (server-rendered HTML comes with no data then the client downloads JS `just` to know that now it needs to load the data. Not efficient)
 - Fetching directly in Effects makes it easy to create “network waterfalls”.
-- Fetching directly in Effects usually means you don’t preload or cache data. (on re-mount it would have to fetch the data again.)
+- Fetching directly in Effects usually means you don’t preload or cache data. (on remount it would have to fetch the data again.)
 - Race condition => Learn about race condition => [https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect]
 
 **SOLUTION for the above problem :**
@@ -309,7 +315,7 @@ How clouser works if you do not clearTimeout => [https://react.dev/learn/synchro
 
 **NOTE :** Api call to buy something, add to cart etc should not be in useEffect as revisiting the page can cause BUYING an item, these apis calls should happen in event handlers, not in Effect 
 
-`Object.is('travel', 'general')` => If gives falss then effect runs, if true means there is no change in dependency.
+`Object.is('travel', 'general')` => If gives false then effect runs, if true means there is no change in dependency.
 
 
 ```js
@@ -349,9 +355,5 @@ export default function Page() {
 }
 ```
 -----
-
-
-
-
 
 

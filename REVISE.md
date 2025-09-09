@@ -35,7 +35,7 @@
 - logic inside component (1. rendering (pure)- return JSX || 2. side effects - triggered by handlers OR rendering)
 - EFFECT => declare, dependencyArray, cleanup(leakage) => when cleanUp needed & when not
 - In dev (react mounts, unmounts & then mounts), not in prod.
-- fetching data in useEffect (n/w waterfall, no-cache, RACE CONDITION)
+- fetching data in useEffect || DOWNSIDES => n/w waterfall, no-cache, RACE CONDITION
 
 
 

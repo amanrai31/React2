@@ -107,7 +107,7 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 **NOTE :** Normally, array element 0 `(index:0)` is used as `initial value`, and the iteration starts from array element 1(index: 1). If an initial value is supplied, this is used, and the iteration starts from array element 0(index :0). (🇮🇳)
 
-`If a state variable is getting updated by many event handlers`, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
+` **USE** => If a state variable is getting updated by many event handlers`, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
 
 1. Move from setting state to dispatching actions.
 2. Write a reducer function.

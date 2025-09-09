@@ -29,7 +29,7 @@
 
 - ESCAPE HATCHES (step outside React and communicate with external APIs)
 - useRef (state variable without setter f/n)
-- useRef (store timers & manipulate DOM) || scrollIntoView(), focus()
+- useRef => stepOutside react(external APIs, store timers & manipulate DOM) || scrollIntoView(), focus()
 - access other component DOM nodes using useRef (do not work during rendering => flushSync)
 - useEffect (If you want to do something with a ref, but there is no particular event to do it in- SIDE EFFECT caused by rendering)
 - logic inside component (1. rendering (pure)- return JSX || 2. side effects - triggered by handlers OR rendering)

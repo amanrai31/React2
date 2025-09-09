@@ -99,15 +99,17 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 **SOLVE CHALLENGES =>** [https://react.dev/learn/preserving-and-resetting-state#challenges]
 
------
+-----------------------------------------------------------------------------------------------------------
 
 ## Extracting State Logic into a Reducer
+
+#### USE => If a state variable is getting updated by many event handlers
 
 **reduce syntax =>** `array.reduce(function(total, currentValue, currentIndex, arr), initialValue)` => currentIndex, arr & initialValue are optional.
 
 **NOTE :** Normally, array element 0 `(index:0)` is used as `initial value`, and the iteration starts from array element 1(index: 1). If an initial value is supplied, this is used, and the iteration starts from array element 0(index :0). (🇮🇳)
 
-` **USE** => If a state variable is getting updated by many event handlers`, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
+`If a state variable is getting updated by many event handlers`, as the code grows it can get complicated. Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps =>
 
 1. Move from setting state to dispatching actions.
 2. Write a reducer function.
@@ -242,9 +244,11 @@ export function useReducer(reducer, initialState) {
 
 **NOTE :** In plain JS we loop over the whole array in reduce f/n. In useReducer, we dispatch one action at a time i.e. array size is 1 so the reduce function only calls the callback(iterate) f/n for one time only and gives the updated/new state. 
 
------
+-----------------------------------------------------------------------------------------------
 
 ## Passing Data Deeply with Context
+
+#### USE => If you want pass information deep down to other components
 
 Usually, you will pass information from a parent component to a child component via props. It could be inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. `Context` lets the parent component make some information available to any component in the tree below it
 

@@ -2,6 +2,8 @@
 
 ## Referencing Values with Refs
 
+#### USE => Whwn you want to read/write directly, & do not want re-render on write || DOM-Manipulation
+
 `useRef` creates a mutable object (`{ current: value }`) that persists across renders without triggering re-renders.
 
 **useRef is useState, except we mutate it directly(without using setter f/n) and that’s why it doesn’t trigger render but survives re-render like state**

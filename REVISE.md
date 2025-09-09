@@ -31,11 +31,12 @@
 - useRef (state variable without setter f/n), USE of REF
 - useRef => stepOutside react(external APIs, store timers & manipulate DOM) || scrollIntoView(), focus()
 - access other component DOM nodes using useRef (do not work during rendering => flushSync)
-- useEffect, USE(If you want to do something with a ref, but there is no particular event to do it in- SIDE EFFECT caused by rendering)
+ 
+- useEffect, USE || (SIDE EFFECT caused by rendering)
 - logic inside component (1. rendering (pure)- return JSX || 2. side effects - triggered by handlers OR rendering)
-- EFFECT => declare, dependencyArray, cleanup(leakage)
+- EFFECT => declare, dependencyArray, cleanup(leakage) => when cleanUp needed & when not
 - In dev (react mounts, unmounts & then mounts), not in prod.
-- fetching data in useEffect (n/w waterfall, no-cache, Race condition)
+- fetching data in useEffect (n/w waterfall, no-cache, RACE CONDITION)
 
 
 

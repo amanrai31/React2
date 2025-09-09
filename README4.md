@@ -297,13 +297,11 @@ Reducer + context => [https://react.dev/learn/scaling-up-with-reducer-and-contex
   - You can export a component like TasksProvider that provides context.
   - You can also export custom Hooks like useTasks and useTasksDispatch to read it.
 
+-----
 
+**USE of Reducer** => If a state variable is getting updated by many event handlers(consolidate a component’s state update logic)
 
-
-
-
-
-
+**USE of Context** => If you want pass information deep down to other components
 
 
 

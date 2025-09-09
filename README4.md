@@ -103,7 +103,7 @@ Link => [https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to
 
 ## Extracting State Logic into a Reducer
 
-#### USE => If a state variable is getting updated by many event handlers
+#### **USE** => If a state variable is getting updated by many event handlers
 
 **reduce syntax =>** `array.reduce(function(total, currentValue, currentIndex, arr), initialValue)` => currentIndex, arr & initialValue are optional.
 

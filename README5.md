@@ -244,13 +244,13 @@ useEffect(() => {
 
 - React will call your cleanup function each time before the Effect runs again, and one final time when the component unmounts (gets removed).
 
-**NOTE :** In `development` (not in prod), react re-mount component(mount,navigate back,again mount), React verifies that navigating away and back would not break the code. Disconnecting and then connecting again is exactly what should happen! 
+**NOTE :** In `development` (not in prod), React re-mounts component(mount, navigate back, again mount), React verifies that navigating away and back would not break the code. Disconnecting and then connecting again is exactly what should happen! 
 
 **IMPORTANT NOTE :** We use useEffect when the component needs to stay in sync with something external. If you subscribe to something, you must clean it up when unmounting, otherwise you leak resources.
 
 #### Use cleanup if your effect:
 
-- attaches something external (event listener, subscription, connection, timer)
+- attaches something external (event listener, subscription, connection, timer) => `Ask yourself Did I attached something outside React`
 - allocates a resource (object, library, animation)
 - runs continuously until explicitly stopped.
 - If the effect is just computing a value or triggering one-time DOM/API action, cleanup isn’t needed.
@@ -307,7 +307,7 @@ Writing fetch calls inside Effects is a popular way to fetch data, especially in
 
 How clouser works if you do not clearTimeout => [https://react.dev/learn/synchronizing-with-effects#putting-it-all-together]
 
-**NOTE :** Api call to buy something, add to cart etc should not be in useEffect as revisting the page can cause BUYING an item, these apis call should happen in event handlers, not in Effect 
+**NOTE :** Api call to buy something, add to cart etc should not be in useEffect as revisiting the page can cause BUYING an item, these apis calls should happen in event handlers, not in Effect 
 
 `Object.is('travel', 'general')` => If gives falss then effect runs, if true means there is no change in dependency.
 
@@ -348,19 +348,7 @@ export default function Page() {
   );
 }
 ```
-
-
-
 -----
-
-
-
-
-
-
-
-
-
 
 
 

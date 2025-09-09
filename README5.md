@@ -166,7 +166,7 @@ Two types of logic inside React components:
 
 - Event handlers are nested f/n inside your components that do things rather than just calculate them. An event handler might update an input field, submit an HTTP POST request to buy a product, or navigate the user to another screen. Event handlers contain `side effects` (they change the program’s state when triggered)
 
-Now consider a ChatRoom component that must connect to the chat server whenever it’s visible on the screen. Connecting to a server is not a pure calculation (it’s a side effect) so it can’t happen during rendering. Effects run at the end of a commit after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library, browser API).
+Now consider a ChatRoom component that must connect to the chat server whenever it’s visible on the screen. Connecting to a server is not a pure calculation (it’s a side effect) so it can’t happen during rendering. `Effects run at the end of a commit after the screen updates`. This is a good time to synchronize the React components with some external system (like network or a third-party library, browser API).
 
 **NOTE :** Effects let you specify side effects that are caused by rendering itself, rather than by a particular event. `Effect is "side effect" caused by rendering`.  If there’s no external system and you only want to adjust some state based on other state, you might not need an Effect.(Also can cause infinite loop if no dependency given)
 

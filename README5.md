@@ -122,7 +122,7 @@ function setupCatList() {
 
 Try challenge 3 => [https://react.dev/learn/manipulating-the-dom-with-refs#challenges]
 
- Above => `itemsRef` doesn’t hold a single DOM node. Instead, it holds a Map from item ID to a DOM node
+ Above => `itemsRef` doesn’t hold a single DOM node. Instead, it holds a Map from `item ID(key)` to a `DOM node(value)`
 
 
 ### Accessing another component’s DOM nodes 

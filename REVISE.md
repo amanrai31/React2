@@ -21,17 +21,17 @@
 - Thinking about UI declaratively(REACT way)
 - Choosing the State Structure, avoid unnecessary/duplication of state, STATE MIRRORING
 - Preserving and Resetting State (State is tied to a position in the render tree)
-- useReducer, reducer f/n, dispatch, implement useReducer from scratch, useImmerReducer
-- passing data deep with context(CSS property inheritence analogy) || createContext, useContext
+- useReducer, reducer f/n, USE of REDUCER, dispatch, implement useReducer from scratch, useImmerReducer
+- passing data deep with context(CSS property inheritence analogy) || createContext, useContext, USE of CONTEXT
 - Scaling Up with Reducer and Context
 
 -----
 
 - ESCAPE HATCHES (step outside React and communicate with external APIs)
-- useRef (state variable without setter f/n)
+- useRef (state variable without setter f/n), USE of REF
 - useRef => stepOutside react(external APIs, store timers & manipulate DOM) || scrollIntoView(), focus()
 - access other component DOM nodes using useRef (do not work during rendering => flushSync)
-- useEffect (If you want to do something with a ref, but there is no particular event to do it in- SIDE EFFECT caused by rendering)
+- useEffect, USE of EFFECT(If you want to do something with a ref, but there is no particular event to do it in- SIDE EFFECT caused by rendering)
 - logic inside component (1. rendering (pure)- return JSX || 2. side effects - triggered by handlers OR rendering)
 - EFFECT => declare, dependencyArray, cleanup(leakage)
 - In dev (react mounts, unmounts & then mounts), not in prod.
@@ -44,7 +44,7 @@
 
 -----
 
-- HOOKS => useState, useEffect, useRef, useContext, useReducer, useMemo, useCallback etc.
+- HOOKS => useState, useReducer, useContext, useRef, useEffect, useMemo, useCallback etc.
 
 
 

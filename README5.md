@@ -2,7 +2,7 @@
 
 ## Referencing Values with Refs
 
-#### USE => When you want to read/write directly, & do not want re-render on write || DOM-Manipulation
+#### USE => When you want to read/write directly, & do not want re-render on write || Step-Out from react || DOM-Manipulation
 
 `useRef` creates a mutable object (`{ current: value }`) that persists across renders without triggering re-renders.
 

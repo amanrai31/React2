@@ -54,6 +54,8 @@ Suppose we have a comment section but when you navigate from one profile to anot
 
 **Simple READ :** [https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes]
 
+### 4. Sharing logic between event handlers
+
 
 
 

@@ -18,7 +18,7 @@
 
 **IMPORTANT NOTE :** When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering. This makes your code faster.
 
-### Caching expensive calculations 
+### 2. Caching expensive calculations 
 
 ```js
 function TodoList({ todos, filter }) {
@@ -52,17 +52,51 @@ Suppose we have a comment section but when you navigate from one profile to anot
 
 ### 3b. Adjusting some state when a prop changes 
 
+```js
+function List({ items }) {                        // Suppose i want to change only the selection state(to null) when item prop is changed.
+  const [isReverse, setIsReverse] = useState(false);
+  const [selection, setSelection] = useState(null);
+
+  const [prevItems, setPrevItems] = useState(items);
+  if (items !== prevItems) {
+    setPrevItems(items);
+    setSelection(null);
+  }
+  // ...
+}
+```
+
 **Simple READ :** [https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes]
 
 ### 4. Sharing logic between event handlers
 
+`When you’re not sure whether some code should be in an Effect or in an event handler, ask yourself why this code needs to run. Use Effects only for code that should run because the component was displayed to the user.` => Suppose a notification should appear because the user pressed the button, not because the page was displayed! Delete the Effect and put the shared logic into a f/n called from event handler.
 
+=> Suppose you have to send a POST request on page mount then it's good to call POST api inside EFFECT but if you are willing to call POST on some event like form submission then you MUST do it inside handlers.
 
+**Initializing the application  =>** Some logic should only run once when the app loads.
 
+#### Passing data to parent
 
+When child components update the state of their parent components in Effects, the data flow becomes very difficult to trace. Since both the child and the parent need the same data, let the parent component fetch that data, and pass it down to the child instead
 
+```js
+ const [data, setData] = useState(null);
+  // ...
+  return <Child onFetched={setData} />;
+}
 
-
+function Child({ onFetched }) {
+  const data = useSomeAPI();     // Lift it up to parent and pass data as prop to childern instead of fetching data in child & updating parent using some callback 
+  //  Avoid: Passing data to the parent in an Effect
+  useEffect(() => {
+    if (data) {
+      onFetched(data);
+    }
+  }, [onFetched, data]);
+  
+}
+```
 
 
 

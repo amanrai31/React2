@@ -87,7 +87,7 @@ When child components update the state of their parent components in Effects, th
 }
 
 function Child({ onFetched }) {
-  const data = useSomeAPI();     // Lift it up to parent and pass data as prop to childern instead of fetching data in child & updating parent using some callback 
+  const data = useSomeAPI();     // Lift it up to parent and pass data as prop to children instead of fetching data in child & updating parent using some callback 
   //  Avoid: Passing data to the parent in an Effect
   useEffect(() => {
     if (data) {

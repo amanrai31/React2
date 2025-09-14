@@ -98,6 +98,108 @@ function Child({ onFetched }) {
 }
 ```
 
+### Fetching Data
+
+```js
+function SearchResults({ query }) {
+  const [results, setResults] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    // 🔴 Avoid: Fetching without cleanup logic => will cause RACE CONDITION
+    fetchResults(query, page).then(json => {
+      setResults(json);
+    });
+  }, [query, page]);
+
+  function handleNextPageClick() {
+    setPage(page + 1);
+  }
+  // ...
+}
+```
+
+Here we can not put the logic into the event handlers as typing event is not only the main reason to fetch. Search inputs are often prepopulated from the URL, and the user might navigate Back and Forward without touching the input. `It doesn’t matter where page and query come from. While this component is visible, you want to keep results synchronized with data from the network for the current page and query. This is why it’s an Effect.`
+
+
+Imagine you type "hello" fast. Then the query will change from "h", to "he", "hel", "hell", and "hello". This will kick off separate fetches, but there is no guarantee about which order the responses will arrive in. `This is called a “race condition”: two different requests “raced” against each other and came in a different order than you expected.` => To fix the race condition, we need to add a cleanup function to ignore stale responses:
+
+```js
+function SearchResults({ query }) {
+  const [results, setResults] = useState([]);
+  const [page, setPage] = useState(1);
+  useEffect(() => {
+    let ignore = false;
+    fetchResults(query, page).then(json => {
+      if (!ignore) {
+        setResults(json);
+      }
+    });
+    return () => {
+      ignore = true;
+    };
+  }, [query, page]);
+
+  function handleNextPageClick() {
+    setPage(page + 1);
+  }
+  // ...
+}
+```
+
+### Cache
+
+```
+function SearchResults({ query }) {
+  const [page, setPage] = useState(1);
+  const params = new URLSearchParams({ query, page });
+  const results = useData(`/api/search?${params}`);
+
+  function handleNextPageClick() {
+    setPage(page + 1);
+  }
+  // ...
+}
+
+const cache = {};
+
+function useData(url) {                                  // CUSTOM HOOK
+  const [data, setData] = useState(cache[url] ?? null);
+
+  useEffect(() => {
+    let ignore = false;
+
+    if (cache[url]) {
+      // ✅ use cached data immediately
+      setData(cache[url]);
+      return;
+    }
+
+    fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        if (!ignore) {
+          cache[url] = json; // ✅ store in cache
+          setData(json);
+        }
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, [url]);
+
+  return data;
+}
+
+```
+
+You’ll likely also want to add some logic for error handling and to track whether the content is loading. In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like useData above. 
+
+
+
+
+
 
 
 

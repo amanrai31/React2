@@ -1,4 +1,4 @@
-# Lifecycle of Reactive Effects
+# Separating Events from Effects
 
 
 

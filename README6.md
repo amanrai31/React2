@@ -124,6 +124,8 @@ Here we can not put the logic into the event handlers as typing event is not onl
 
 Imagine you type "hello" fast. Then the query will change from "h", to "he", "hel", "hell", and "hello". This will kick off separate fetches, but there is no guarantee about which order the responses will arrive in. `This is called a “race condition”: two different requests “raced” against each other and came in a different order than you expected.` => To fix the race condition, we need to add a cleanup function to ignore stale responses:
 
+**NOTE :** `React render creates a closure: useEffect works with closures, and every render gets its own snapshot of variables and state. i.e. every fetch has it's own boolean flag`
+
 ```js
 function SearchResults({ query }) {
   const [results, setResults] = useState([]);

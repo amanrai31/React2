@@ -196,6 +196,8 @@ function useData(url) {                                  // CUSTOM HOOK
 
 You’ll likely also want to add some logic for error handling and to track whether the content is loading. In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like useData above. 
 
+**Challenges =>** https://react.dev/learn/you-might-not-need-an-effect#challenges
+
 -----
 
 # Lifecycle of Reactive Effects

@@ -2,13 +2,6 @@
 
 ## You Might Not Need an Effect
 
-- Why and how to remove unnecessary Effects from your components
-- How to cache expensive computations without Effects
-- How to reset and adjust component state without Effects
-- How to share logic between event handlers
-- Which logic should be moved to event handlers
-- How to notify parent components about changes
-
 **Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.**
 
 ### 1. How to remove unnecessary Effects
@@ -78,12 +71,15 @@ function List({ items }) {                        // Suppose i want to change on
 
 **Initializing the application  =>** Some logic should only run once when the app loads.
 
-#### Passing data to parent
+### 5. Passing data to parent
 
-When child components update the state of their parent components in Effects, the data flow becomes very difficult to trace. Since both the child and the parent need the same data, let the parent component fetch that data, and pass it down to the child instead
+When child components update the state of their parent components in Effects, the data flow becomes very difficult to trace. Since both the child and the parent need the same data, let the parent component fetch that data, and pass it down to the child instead.
+
+=> 1. When child will render 2. It will run EFFECT & fetch the data then 3. it will update the parent state will again cause render of parent & thus child.
 
 ```js
- const [data, setData] = useState(null);
+function Parent() {
+  const [data, setData] = useState(null);
   // ...
   return <Child onFetched={setData} />;
 }

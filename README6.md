@@ -1,4 +1,4 @@
-# EASCAPE HATCHES
+# EASCAPE HATCHES => You Might Not Need an Effect, Lifecycle of Reactive Effects
 
 ## You Might Not Need an Effect
 

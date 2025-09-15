@@ -200,4 +200,6 @@ You’ll likely also want to add some logic for error handling and to track whet
 
 -----
 
+# Lifecycle of Reactive Effects
+
 

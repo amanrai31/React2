@@ -37,8 +37,13 @@
 - In dev (react mounts, unmounts & then mounts), not in prod.
 - fetching data in useEffect || DOWNSIDES => n/w waterfall, no-cache, RACE CONDITION
 
+-----
 
-
+- Remove unnecessary Effects (Calculate during rendering iff possible)
+- Cache/memoize function (if it calculates something during rendering) || All memoization is caching, but not all caching is memoization.
+- Resetting "all" state when a prop changes || Resetting "some" state when a prop changes
+- Put/share Effect logic in event handlers (iff possible)
+- Fetching data inside EFFECT, avoid RACE CONDITION (using boolean flag), cache, memoization
 
 -----
 

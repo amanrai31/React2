@@ -20,6 +20,8 @@
 
 ### 2. Caching expensive calculations 
 
+In order to reduce useEffects we can use some function(iff possible) which calculates something during rendering then we should memoize that function.
+
 ```js
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
@@ -41,7 +43,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-**NOTE :** The function you wrap in useMemo runs during rendering, so this only works for `pure calculations`. So, if you declare some function which calculates something during rendering then we should memoize that function.
+**NOTE :** The function you wrap in useMemo runs during rendering, so this only works for `pure calculations`.
 
 ### 3a. Resetting all state when a prop changes 
 

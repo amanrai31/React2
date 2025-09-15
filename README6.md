@@ -198,34 +198,6 @@ function useData(url) {                                  // CUSTOM HOOK
 
 You’ll likely also want to add some logic for error handling and to track whether the content is loading. In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like useData above. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -----
 
 
-**Again :** If you want to use plain JS variable/array etc. inside a component, make sure that is dependent on or should have some sort of relation with state so that when component re-renders then the variable is in sync with state otherwise, it will reset its value on every render. OR we can declare it outside the component(that way it will be immune to component renders).
-
-
-**MORE ON REACT (REACT REFERENCE)** => [https://react.dev/reference/react]
-
-Learn FORM, CSS Positioning, Storage
-
------

@@ -202,4 +202,59 @@ You’ll likely also want to add some logic for error handling and to track whet
 
 # Lifecycle of Reactive Effects
 
+Every React component goes through the same lifecycle => 1. A component mounts when it’s added to the screen. || 2. A component updates when it receives new props or state, usually in response to an interaction. || 3. A component unmounts when it’s removed from the screen.
+
+`An Effect describes how to synchronize an external system to the current props and state.`
+
+```js
+const serverUrl = 'https://localhost:1234';
+
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId]);
+  // ...
+}
+```
+
+When a component's prop OR state changes the react will run the cleanUp f/n & re-subscribe again with updated values of state or prop (They should be there in the dependency array)
+
+`Thinking about Effect => Always focus on a single start/stop cycle at a time. It shouldn’t matter whether a component is mounting, updating, or unmounting. All you need to do is to describe how to start synchronization and how to stop it. If you do it well, your Effect will be resilient to being started and stopped as many times as it’s needed.`
+
+`Each Effect in your code should represent a separate and independent synchronization process.`
+
+**NOTE =>** When component mounts(for 1st time) or re-mount(not talking about re-render), then EFFECT `sync-disconnect-sync` (Only in dev mode). If only dependency changes(or component re-renders) in EFFECT then it does not do  this `sync-disconnect-sync` behaviour.
+
+
+**NOTE =>** The empty [] dependency array means this Effect connects to the chat room only when the component mounts, and disconnects only when the component unmounts. Not on every re-render. There is a difference in re-render & re-mount.
+
+**All variables declared in the component body are reactive =>** Props and state aren’t the only reactive values. Values that you calculate from them are also reactive.
+
+**Learn about =>** useSyncExternalStore.
+
+**IMPORTANT NOTE =>** Mutable values (including global variables) aren’t reactive. A mutable value like ref.current or things you read from it also can’t be a dependency. The ref object returned by useRef itself can be a dependency, but its current property is intentionally mutable. But since changing it doesn’t trigger a re-render, it’s not a reactive value, and React won’t know to re-run your Effect when it changes.
+
+- If your linter is configured for React, it will check that every reactive value used by your Effect’s code is declared as its dependency.
+
+**NOTE :** In some cases, React knows that a value never changes even though it’s declared inside the component. e.g., the set f/n returned from useState and the ref object returned by useRef are stable—they are guaranteed to not change on a re-render. Stable values aren’t reactive, so you may omit them from the list. Including them is allowed: they won’t change, so it doesn’t matter.
+
+**NOTE :** Each Effect has a separate lifecycle from the surrounding component. Each Effect describes a separate synchronization process that can start and stop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

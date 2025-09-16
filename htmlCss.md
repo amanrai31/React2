@@ -9,3 +9,31 @@ CSS Positioning => static(default), relative, absolute, fixed, sticky
 - **Fixed =>** Elements are positioned relative to the viewport(a/c to screen, not parent) and stay in the same position even when scrolling. They're removed from the document flow like absolute elements. **Perfect for navigation bars, floating action buttons, or any UI element that should remain visible during scrolling.**
 
 - **Sticky =>** A hybrid between relative and fixed positioning. Elements behave as relatively positioned until they reach a specified scroll threshold, then become fixed within their containing block. The element(Table's header) scrolls normally until it reaches 10px from the top of its container, then sticks there. When the container scrolls out of view, the sticky element goes with it. (Jab tak table ke andar scroll karoge, header chipka rahega. Table ke bahar scroll karoge to header bhi gayab ho jaayega).
+
+
+-----
+
+<label>
+        Choose the chat room:{' '}
+        <select
+          value={roomId}
+          onChange={e => setRoomId(e.target.value)}
+        >
+          <option value="general">general</option>
+          <option value="travel">travel</option>
+          <option value="music">music</option>
+        </select>
+</label>
+
+<label>
+        <input
+          type="checkbox"
+          checked={isEncrypted}
+          onChange={e => setIsEncrypted(e.target.checked)}
+        />
+        Enable encryption
+</label>
+
+-----
+
+      

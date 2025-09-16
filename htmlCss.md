@@ -13,7 +13,8 @@ CSS Positioning => static(default), relative, absolute, fixed, sticky
 
 -----
 
-```<label>
+```
+<label>
         Choose the chat room:{' '}
         <select
           value={roomId}

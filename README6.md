@@ -244,7 +244,7 @@ When a component's prop OR state changes the react will run the cleanUp f/n & re
 
 **NOTE :** Each Effect has a separate lifecycle from the surrounding component. Each Effect describes a separate synchronization process that can start and stop.
 
-
+`Effects are not a tool for code reuse. Do not focus much on combining multiple effects in a single effect`
 
 
 

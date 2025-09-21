@@ -52,7 +52,33 @@ export default function App() {
   }, []);
 ```
 
-Try challenge 2 & 3 =>  https://react.dev/learn/separating-events-from-effects#challenges
+Try challenges =>  https://react.dev/learn/separating-events-from-effects#challenges
+
+-----
+
+# Removing Effect Dependencies
+
+Dependencies should match the code  => When you write an Effect, you first specify how to start and stop whatever you want your Effect to be doing. Then, if you leave the Effect dependencies empty ([]), the linter will suggest the correct dependencies
+
+**Reactive values include props and all variables(including state) and functions declared directly inside of your component. **
+
+
+
+```js
+const serverUrl = 'https://localhost:1234';
+
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => connection.disconnect();
+  	// ...
+}
+```
+
+
+
+
 
 ------
 

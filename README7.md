@@ -60,9 +60,26 @@ Try challenges =>  https://react.dev/learn/separating-events-from-effects#challe
 
 Dependencies should match the code  => When you write an Effect, you first specify how to start and stop whatever you want your Effect to be doing. Then, if you leave the Effect dependencies empty ([]), the linter will suggest the correct dependencies
 
+1. To remove a dependency, prove that it’s not a dependency
+2. To change the dependencies, change the code
+
 **Reactive values include props and all variables(including state) and functions declared directly inside of your component. **
 
+### Removing unnecessary dependencies
 
+Look at the dependency list. Does it make sense for the Effect to re-run when any of these dependencies change? Sometimes, the answer is “no”
+
+- You might want to re-execute different parts of your Effect under different conditions.
+- You might want to only read the latest value of some dependency instead of “reacting” to its changes.
+- A dependency may change too often unintentionally because it’s an object or a function.
+
+#### 1. Should this code move to an event handler?
+
+Like hitting POST request on form submission - Put it in event handler
+
+#### 2. Is your Effect doing several unrelated things?
+
+Avoid: A single Effect synchronizes two or more independent processes
 
 ```js
 const serverUrl = 'https://localhost:1234';
@@ -75,6 +92,8 @@ function ChatRoom({ roomId }) {
   	// ...
 }
 ```
+
+
 
 
 

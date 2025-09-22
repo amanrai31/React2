@@ -93,11 +93,91 @@ function ChatRoom({ roomId }) {
 }
 ```
 
+#### 3. Are you reading some state to calculate the next state? 
 
+```js
+function ChatRoom({ roomId }) {
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    const connection = createConnection();
+    connection.connect();
+    connection.on('message', (receivedMessage) => {
+      setMessages([...messages, receivedMessage]);
+    });
+    return () => connection.disconnect();
+  }, [roomId, messages]); // ✅ All dependencies declared
+  // ...
+```
 
+Since this Effect now depends on messages, this will also re-synchronize the Effect. So every new message will make the chat re-connect. To fix the issue, don’t read messages inside the Effect. Instead, pass an updater function to setMessages
 
+```js
+function ChatRoom({ roomId }) {
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    const connection = createConnection();
+    connection.connect();
+    connection.on('message', (receivedMessage) => {
+      setMessages(msgs => [...msgs, receivedMessage]);
+    });
+    return () => connection.disconnect();
+  }, [roomId]); // ✅ All dependencies declared
+  // ...
+```
 
+Now Effect does not read the messages variable at all now. 
 
+#### 4. Do you want to read a value without “reacting” to its changes? (useEffectEvent)
+
+`useEffectEvent Separates reactive and non-reactive code`
+
+```js
+function ChatRoom({ roomId }) {
+  const [messages, setMessages] = useState([]);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const onMessage = useEffectEvent(receivedMessage => {
+    setMessages(msgs => [...msgs, receivedMessage]);
+    if (!isMuted) {   // Moved this inside useEffectEvent otherwise we have to put this inside dependency array & would cause re-sync when changes unnecessarily
+      playSound();
+    }
+  });
+
+  useEffect(() => {
+    const connection = createConnection();
+    connection.connect();
+    connection.on('message', (receivedMessage) => {
+      onMessage(receivedMessage);
+    });
+    return () => connection.disconnect();
+  }, [roomId]); // ✅ All dependencies declared
+```
+
+`Effect Events` let you split an Effect into reactive parts (which should “react” to reactive values like roomId and their changes) and non-reactive parts (which only read their latest values, like onMessage reads isMuted). Now that you read isMuted inside an Effect Event, it doesn’t need to be a dependency of your Effect. As a result, the chat won’t re-connect when you toggle the “Muted” setting on and off, solving the original issue!
+
+**LINK =>** https://react.dev/learn/removing-effect-dependencies#do-you-want-to-read-a-value-without-reacting-to-its-changes
+
+#### 5. Does some reactive value change unintentionally?
+
+`In JS, each newly created object and function is considered distinct from all the others. It doesn’t matter that the contents inside of them may be the same!`
+
+1. Move static objects and functions outside your component
+2. Move dynamic objects and functions inside your Effect
+3. Calculate primitive values from objects
+4. Calculate primitive values from functions
+
+```
+- Dependencies should always match the code.
+- When you’re not happy with your dependencies, what you need to edit is the code.
+- Suppressing the linter leads to very confusing bugs, and you should always avoid it.
+- To remove a dependency, you need to “prove” to the linter that it’s not necessary.
+- If some code should run in response to a specific interaction, move that code to an event handler.
+- If different parts of your Effect should re-run for different reasons, split it into several Effects.
+- If you want to update some state based on the previous state, pass an updater function.
+- If you want to read the latest value without “reacting” it, extract an Effect Event from your Effect.
+- In JavaScript, objects and functions are considered different if they were created at different times.
+- Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
+```
 
 ------
 

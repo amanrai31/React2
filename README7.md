@@ -178,6 +178,23 @@ function ChatRoom({ roomId }) {
 - In JavaScript, objects and functions are considered different if they were created at different times.
 - Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
 ```
+Suppose you passed some object as prop to child, child's EFFECT using that prop(object) as dependency. Now every time when any state change in parent then will re-create that object and child's effct will re-run the effect. So destructure it first & then use(primitive values) it as dependency.
+
+------
+
+# Reusing Logic with Custom Hooks
+
+
+
+
+
+
+
+
+
+
+
+
 
 ------
 

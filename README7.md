@@ -178,19 +178,81 @@ function ChatRoom({ roomId }) {
 - In JavaScript, objects and functions are considered different if they were created at different times.
 - Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
 ```
-Suppose you passed some object as prop to child, child's EFFECT using that prop(object) as dependency. Now every time when any state change in parent then will re-create that object and child's effct will re-run the effect. So destructure it first & then use(primitive values) it as dependency.
+Suppose you passed some object as prop to child, child's EFFECT using that prop(object) as a dependency. Now every time when any state change in the parent then will re-create that object and child's effect will re-run the effect. So destructure it first & then use(primitive values) it as a dependency.
 
 ------
 
 # Reusing Logic with Custom Hooks
 
+### Custom Hooks: Sharing logic between components
 
+Suppose you made an app which has multiple components & each component has some element to show the user is online OR not. 
 
+```js
 
+// Suppose this is landing page
+import { useState, useEffect } from 'react';
 
+export default function StatusBar() {
+  const [isOnline, setIsOnline] = useState(true);
+  useEffect(() => {
+    function handleOnline() {
+      setIsOnline(true);
+    }
+    function handleOffline() {
+      setIsOnline(false);
+    }
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
+  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+}
+```
 
+Now imagine you also want to use the same logic in a different component. You want to implement a Save button that will become disabled and show “Reconnecting…” instead of “Save” while the network is off.
 
+- To start, you can copy and paste the isOnline state and the Effect into SaveButton. These two components work fine, but the duplication in logic between them is unfortunate.
+
+**Extracting your own custom Hook from a component **
+
+```js
+function StatusBar() {
+  const isOnline = useOnlineStatus();
+  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+}
+
+function SaveButton() {
+  const isOnline = useOnlineStatus();
+
+  function handleSaveClick() {
+    console.log('✅ Progress saved');
+  }
+
+  return (
+    <button disabled={!isOnline} onClick={handleSaveClick}>
+      {isOnline ? 'Save progress' : 'Reconnecting...'}
+    </button>
+  );
+}
+```
+
+Now your components don’t have as much repetitive logic. More importantly, the code inside them describes what they want to do (use the online status!) rather than how to do it (by subscribing to the browser events).
+
+1. Custom hook name must start with `use`
+2. As custom hook uses React hooks inside, so we can not name custom hook like any other function in our component(as we can not call hooks inside some function). Only Hooks and components can call other Hooks!
+
+READ => https://react.dev/learn/reusing-logic-with-custom-hooks#custom-hooks-let-you-share-stateful-logic-not-state-itself
+
+**NOTE =>** Custom Hooks let you share stateful logic but not state itself. Each call to a Hook is completely independent from every other call to the same Hook. When you need to share the state itself between multiple components, lift it up and pass it down instead.
+
+### Passing reactive values between Hooks 
+
+The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks need to be pure. Think of custom Hooks’ code as part of your component’s body! Because custom Hooks re-render together with your component, they always receive the latest props and state. 
 
 
 

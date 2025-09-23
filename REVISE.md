@@ -47,6 +47,11 @@
 - Lifecycle of Reactive Effects, re-render VS re-mount || reactive values(props, state, variables, OBJ, functions)
 -----
 
+- Separating Events from Effects(useEffectEvent)
+
+
+-----
+
 - HOOKS => useState, useReducer, useContext, useRef, useEffect, useMemo, useCallback etc.
 
 

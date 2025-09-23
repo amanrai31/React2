@@ -254,9 +254,28 @@ READ => https://react.dev/learn/reusing-logic-with-custom-hooks#custom-hooks-let
 
 The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks need to be pure. Think of custom Hooks’ code as part of your component’s body! Because custom Hooks re-render together with your component, they always receive the latest props and state. 
 
+```js
+export default function ChatRoom({ roomId }) {
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
+  useChatRoom({
+    roomId: roomId,
+    serverUrl: serverUrl
+  });
+  // ...
+```
 
+- Notice how you’re taking the return value of one Hook and passing it as an input to another Hook. It’s as if the output of useState “feeds into” the input of the useChatRoom. It is similar to chaining visual or audio effects in an audio/vedio software.
 
+#### Passing prop to custom hooks => Experimental
+
+### When to use custom hooks
+
+You don’t need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. **Keep your custom Hooks focused on concrete high-level use cases**
+
+**Challenges 4 & 5 =>** https://react.dev/learn/reusing-logic-with-custom-hooks#challenges. FORK challenge 5.
+
+**Where could be RACE condition =>** You are chossing some option from dropdown & calling API, or calling API on changing the input. These are the situation where race condition is most likly to occur. Simple way to manage is to use boolean flags
 
 ------
 

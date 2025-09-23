@@ -44,7 +44,7 @@
 - Resetting "all" state when a prop changes || Resetting "some" state when a prop changes
 - Put/share Effect logic in event handlers (iff possible)
 - Fetching data inside EFFECT, avoid RACE CONDITION (using boolean flag), cache, memoization
-
+- Lifecycle of Reactive Effects, re-render VS re-mount || reactive values(props, state, variables, OBJ, functions)
 -----
 
 - HOOKS => useState, useReducer, useContext, useRef, useEffect, useMemo, useCallback etc.
